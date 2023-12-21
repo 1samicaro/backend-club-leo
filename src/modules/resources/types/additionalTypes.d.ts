@@ -1,6 +1,6 @@
 export interface AdditionalTypesModel {
-  id: number;
-  name: string;
+  id: number
+  name: string
 }
 
-export interface AdditionalType extends AdditionalTypesModel {}
+export interface AdditionalType extends AdditionalTypesModel { }

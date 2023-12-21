@@ -1,100 +1,100 @@
 const schemas = {
   newDocumentType: {
-    type: "object",
-    required: ["name", "label", "PersonTypeId", "CountryId"],
+    type: 'object',
+    required: ['name', 'label', 'PersonTypeId', 'CountryId'],
     properties: {
       name: {
-        type: "string",
+        type: 'string'
       },
       label: {
-        type: "string",
+        type: 'string'
       },
       PersonTypeId: {
-        type: "number",
+        type: 'number'
       },
       CountryId: {
-        type: "number",
-      },
-    },
+        type: 'number'
+      }
+    }
   },
   newCountry: {
-    type: "object",
-    required: ["name", "code"],
+    type: 'object',
+    required: ['name', 'code'],
     properties: {
       name: {
-        type: "string",
+        type: 'string'
       },
       code: {
-        type: "string",
-      },
-    },
+        type: 'string'
+      }
+    }
   },
   newCity: {
-    type: "object",
-    required: ["name", "CountryId"],
+    type: 'object',
+    required: ['name', 'CountryId'],
     properties: {
       name: {
-        type: "string",
+        type: 'string'
       },
       CountryId: {
-        type: "number",
-      },
-    },
+        type: 'number'
+      }
+    }
   },
   newPersonType: {
-    type: "object",
-    required: ["name"],
+    type: 'object',
+    required: ['name'],
     properties: {
       name: {
-        type: "string",
-      },
-    },
+        type: 'string'
+      }
+    }
   },
   newAdditionalType: {
-    type: "object",
-    required: ["name", "PersonTypeId"],
+    type: 'object',
+    required: ['name', 'PersonTypeId'],
     properties: {
       name: {
-        type: "string",
+        type: 'string'
       },
       PersonTypeId: {
-        type: "number",
-      },
-    },
+        type: 'number'
+      }
+    }
   },
   newCategory: {
-    type: "object",
-    required: ["name", "image", "isService"],
+    type: 'object',
+    required: ['name', 'image', 'isService'],
     properties: {
       name: {
-        type: "string",
+        type: 'string'
       },
       image: {
-        type: "string",
+        type: 'string'
       },
       isService: {
-        type: "boolean",
-      },
-    },
+        type: 'boolean'
+      }
+    }
   },
   newMessage: {
-    type: "object",
-    required: ["query", "message", "user"],
+    type: 'object',
+    required: ['query', 'message', 'user'],
     properties: {
       query: {
-        type: "string",
+        type: 'string'
       },
       message: {
-        type: "array",
+        type: 'array',
         items: {
-          type: "string",
-        },
+          type: 'string'
+        }
       },
       user: {
-        type: "string",
-      },
-    },
-  },
-};
+        type: 'string'
+      }
+    }
+  }
+}
 
-export default schemas;
+export default schemas

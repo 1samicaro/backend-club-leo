@@ -1,7 +1,7 @@
 export interface CountriesModel {
-  id?: number;
-  name: string;
-  code: number;
+  id?: number
+  name: string
+  code: number
 }
 
-export interface Country extends CountriesModel {}
+export interface Country extends CountriesModel { }
