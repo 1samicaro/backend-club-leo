@@ -2,7 +2,6 @@ import { Sequelize } from 'sequelize'
 import fs from 'fs'
 import path from 'path'
 
-require('dotenv').config()
 const { DATABASE_URL } = process.env
 
 const config = {
@@ -14,7 +13,6 @@ const config = {
   }
 }
 
-console.log('aaa ', process.env.DATABASE_URL)
 const sequelize = new Sequelize(DATABASE_URL as string, config)
 
 const modules: string[] = fs.readdirSync(path.join(__dirname, './modules'))

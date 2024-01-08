@@ -56,11 +56,11 @@ const createUsers = (req) => __awaiter(void 0, void 0, void 0, function* () {
     }
     const newUser = yield users_1.default.postUser(userData);
     const _a = newUser.dataValues, { password } = _a, user = __rest(_a, ["password"]);
-    yield (0, sendEmail_1.default)(user.email, 'Bienvenido a club-leo', `Hola ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]} `, `<!DOCTYPE html>
+    yield (0, sendEmail_1.default)(user.email, 'Bienvenido a mingga', `Hola ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]} `, `<!DOCTYPE html>
   <html>
       <head>
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-          <title>Presentación club-leo</title>
+          <title>Presentación Mingga</title>
           <style>
               .img-container {
                   text-align: center;
@@ -104,7 +104,7 @@ const createUsers = (req) => __awaiter(void 0, void 0, void 0, function* () {
                   <br />
                   <br />
                   <p>Atentamente,</p>
-                  <h2>Equipo club-leo</h2>
+                  <h2>Equipo Mingga</h2>
               </article>
           </section>
       </body>
@@ -143,7 +143,7 @@ const verifyUserById = (req) => __awaiter(void 0, void 0, void 0, function* () {
     if (user === null) {
         throw new Error('User not found');
     }
-    yield (0, sendEmail_1.default)(user.email, 'Bienvenido a club-leo', `Hola ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]} `, `<!DOCTYPE html>
+    yield (0, sendEmail_1.default)(user.email, 'Bienvenido a mingga', `Hola ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]} `, `<!DOCTYPE html>
   <html>
       <head>
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -177,7 +177,7 @@ const verifyUserById = (req) => __awaiter(void 0, void 0, void 0, function* () {
                   <p>Te damos la bienvenida tu usuario a sido verificado, ya puedes ofertar con nosotros</p>
                   <br />
                   <p>Atentamente,</p>
-                  <h2>Equipo club-leo</h2>
+                  <h2>Equipo Mingga</h2>
               </article>
           </section>
       </body>

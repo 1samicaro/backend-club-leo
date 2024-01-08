@@ -16,14 +16,14 @@ const nodemailer_1 = __importDefault(require("nodemailer"));
 const transporter = nodemailer_1.default.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'clubleoapp@gmail.com',
-        pass: 'Milena1995*'
+        user: 'minggarmb@gmail.com',
+        pass: 'eoqduodlxxinwlbq'
     },
     secure: true
 });
 const sendEmail = (email, subject, text, html) => __awaiter(void 0, void 0, void 0, function* () {
     const mailData = {
-        from: 'clubleoapp@gmail.com',
+        from: 'minggarmb@gmail.com',
         to: email,
         subject,
         text,

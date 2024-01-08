@@ -39,11 +39,11 @@ const createUsers = async (req: Request): Promise<User> => {
   const newUser: UserAuthenticated = await usersService.postUser(userData)
   const { password, ...user } = newUser.dataValues as User
 
-  await sendEmail(user.email, 'Bienvenido a club-leo', `Hola ${user?.name[1]} ${user?.name[0]} `, `<!DOCTYPE html>
+  await sendEmail(user.email, 'Bienvenido a mingga', `Hola ${user?.name[1]} ${user?.name[0]} `, `<!DOCTYPE html>
   <html>
       <head>
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-          <title>Presentación club-leo</title>
+          <title>Presentación Mingga</title>
           <style>
               .img-container {
                   text-align: center;
@@ -78,7 +78,7 @@ const createUsers = async (req: Request): Promise<User> => {
                   <br />
                   <h3>solo te falta hacer dos cosas:</h3>
                   <ul>
-                      <li>Invitar a 10 personas a ser socios de Club-leo, con tu usuario.</li>
+                      <li>Invitar a 10 personas a ser socios de Minga, con tu usuario.</li>
                       <li>Cada vez que necesites algo, adquiérelo a través de nuestra Red Comercial.</li>
                   </ul>
                   <br />
@@ -87,7 +87,7 @@ const createUsers = async (req: Request): Promise<User> => {
                   <br />
                   <br />
                   <p>Atentamente,</p>
-                  <h2>Equipo Club-leo</h2>
+                  <h2>Equipo Mingga</h2>
               </article>
           </section>
       </body>
@@ -137,7 +137,7 @@ const verifyUserById = async (req: Request): Promise<User> => {
     throw new Error('User not found')
   }
 
-  await sendEmail(user.email, 'Bienvenido a club-leo', `Hola ${user?.name[1]} ${user?.name[0]} `, `<!DOCTYPE html>
+  await sendEmail(user.email, 'Bienvenido a mingga', `Hola ${user?.name[1]} ${user?.name[0]} `, `<!DOCTYPE html>
   <html>
       <head>
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -311,7 +311,7 @@ const resetPassword = async (req: Request): Promise<void> => {
                   <br />
                   <h3>No olvides cambiar tu contraseña una vez logres ingresar de nuevo.</h3>
                   <br />
-                  <h2>Equipo club-leo</h2>
+                  <h2>Equipo Mingga</h2>
               </article>
           </section>
       </body>
