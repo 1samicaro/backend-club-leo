@@ -14,7 +14,7 @@ const swaggerDefinition = {
     },
     servers: [
         {
-            url: 'https://mingga-ff62aecb8180.herokuapp.com'
+            url: 'https://biblioleo-frontend-86a57065d2f7.herokuapp.com'
         },
         {
             url: 'http://localhost:4000'
