@@ -16,11 +16,11 @@ const validateCreateDocumentType = [
     .isLength({ min: 1, max: 3 })
     .trim()
     .escape(),
-  body('CountryId', 'Country not valid')
+  body('countryId', 'Country not valid')
     .exists()
     .isInt()
     .toInt(),
-  body('PersonTypeId', 'PersonType not valid')
+  body('personTypeId', 'PersonType not valid')
     .exists()
     .isInt()
     .toInt(),
@@ -30,11 +30,11 @@ const validateCreateDocumentType = [
 ]
 
 const validateListDocumentTypes = [
-  query('CountryId', 'Country not valid')
+  query('countryId', 'Country not valid')
     .exists()
     .isInt()
     .toInt(),
-  query('PersonTypeId', 'PersonType not valid')
+  query('personTypeId', 'PersonType not valid')
     .exists()
     .isInt()
     .toInt(),

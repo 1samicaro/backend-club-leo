@@ -2,16 +2,18 @@ import { Sequelize } from 'sequelize'
 import fs from 'fs'
 import path from 'path'
 
-const { DATABASE_URL } = process.env
+const { DATABASE_URL, NODE_ENV } = process.env
 
-const config = {
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
+const config = NODE_ENV !== 'dev'
+  ? {
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
+      }
     }
-  }
-}
+  : {}
 
 const sequelize = new Sequelize(DATABASE_URL as string, config)
 

@@ -10,7 +10,7 @@ const validateCreateCity = [
     .isLength({ min: 3, max: 40 })
     .trim()
     .escape(),
-  body('CountryId', 'Country not valid')
+  body('countryId', 'Country not valid')
     .exists()
     .isInt()
     .toInt(),
@@ -20,7 +20,7 @@ const validateCreateCity = [
 ]
 
 const validateListCities = [
-  query('CountryId', 'Country not valid')
+  query('countryId', 'Country not valid')
     .exists()
     .isInt()
     .toInt(),

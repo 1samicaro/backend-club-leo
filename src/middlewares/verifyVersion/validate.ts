@@ -5,7 +5,7 @@ import validator from '../validator'
 
 const validateVersion = [
   header('Version', 'Version not valid')
-    .optional()
+    .exists()
     .isString()
     .isLength({ min: 5, max: 8 })
     .trim()

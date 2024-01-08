@@ -1,12 +1,12 @@
 /**
  * Post track
  * @openapi
- * /resources/personTypes:
+ * /resources/genders:
  *    get:
  *      tags:
- *        - Resources/PersonTypes
- *      summary: "List person types"
- *      description: List person types
+ *        - Resources/Genders
+ *      summary: "List genders"
+ *      description: List genders
  *      parameters:
  *       - in: header
  *         name: Version
@@ -25,12 +25,12 @@
 /**
  * Post track
  * @openapi
- * /resources/personTypes:
+ * /resources/genders:
  *    post:
  *      tags:
- *        - Resources/PersonTypes
- *      summary: "Create person types"
- *      description: Create person types
+ *        - Resources/Genders
+ *      summary: "Create genders"
+ *      description: Create genders
  *      parameters:
  *       - in: header
  *         name: Version
@@ -41,7 +41,7 @@
  *          content:
  *            application/json:
  *              schema:
- *                $ref: "#/components/schemas/newPersonType"
+ *                $ref: "#/components/schemas/newGender"
  *      responses:
  *        '201':
  *          $ref: "#/components/responses/200"
