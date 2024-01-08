@@ -7,6 +7,8 @@ module.exports = (sequelize: Sequelize) => {
   class Roles extends Model<RolesModel> implements RolesModel {
     id!: number
     name!: string
+    permissions!: string[]
+    isPossibleToCreate!: boolean
 
     static associate (models: Record<string, any>): void {
       Roles.hasMany(models.Users)
@@ -22,6 +24,13 @@ module.exports = (sequelize: Sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
+    },
+    permissions: {
+      type: DataTypes.ARRAY(DataTypes.STRING)
+    },
+    isPossibleToCreate: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   }, {
     sequelize,

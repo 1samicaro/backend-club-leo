@@ -14,12 +14,12 @@
  *         type: string
  *         required: true
  *       - in: query
- *         name: countryId
+ *         name: CountryId
  *         schema:
  *         type: number
  *         required: true
  *       - in: query
- *         name: personTypeId
+ *         name: PersonTypeId
  *         schema:
  *         type: number
  *         required: true
@@ -52,6 +52,8 @@
  *            application/json:
  *              schema:
  *                $ref: "#/components/schemas/newDocumentType"
+ *      security:
+ *        - bearerAuth: []
  *      responses:
  *        '201':
  *          $ref: "#/components/responses/200"

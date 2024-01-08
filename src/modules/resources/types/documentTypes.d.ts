@@ -1,5 +1,5 @@
 export interface DocumentTypesModel {
-  id: number
+  id?: number
   name: string
   label: string
 }

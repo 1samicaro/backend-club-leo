@@ -6,12 +6,12 @@ import schemas from './schemas'
 const swaggerDefinition: OAS3Definition = {
   openapi: '3.0.3',
   info: {
-    title: 'Backtemplate',
+    title: 'Mingga Api',
     version: '0.0.1'
   },
   servers: [
     {
-      url: 'https://pelagic-cocoa-382420.rj.r.appspot.com'
+      url: 'https://biblioleo-frontend-86a57065d2f7.herokuapp.com'
     },
     {
       url: 'http://localhost:4000'
