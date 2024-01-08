@@ -3,7 +3,7 @@ runtime: nodejs18
 instance_class: F2
 
 env_variables:
-  DATABASE_URL: "postgres://postgres:*6ZpgAj69pt3*te54qwebn678768fghfghO@35.199.117.153:5432/uat"
+  DATABASE_URL: "postgres://sskppqenuoehwi:0c4a40efc6eebd4e9ab85ed3c5f13d9a8c731ea964fe2314e7464b54b89e444c@ec2-44-213-151-75.compute-1.amazonaws.com:5432/d28cfh02nt3hgf"
   VERSION: "0.0.1"
   NODE_ENV: "uat"
   TOKEN_SECRET: "D6lr466vbF#2tJks6jcW"
