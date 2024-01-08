@@ -2,7 +2,7 @@ import type { CorsOptions } from 'cors'
 
 import Log from '../logger'
 
-const whitelist: string[] = ['http://localhost:3000', 'https://biblioleo-frontend-86a57065d2f7.herokuapp.com', 'http://localhost:4000', 'https://pelagic-cocoa-382420.rj.r.appspot.com', 'http://localhost:4200', 'https://mingga.net', 'https://admin-mingga.vercel.app']
+const whitelist: string[] = ['http://localhost:3000', 'https://biblioleo-frontend-86a57065d2f7.herokuapp.com', 'http://localhost:4000', 'https://pelagic-cocoa-382420.rj.r.appspot.com', 'http://localhost:4200', 'https://mingga.net', 'https://admin-mingga.vercel.app', 'https://biblioleo-700ad891664c.herokuapp.com']
 
 const corsConfig = {
   origin: function (origin: string, response: (res: string | null, cont?: boolean) => void) {
