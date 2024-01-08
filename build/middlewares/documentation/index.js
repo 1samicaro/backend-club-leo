@@ -9,12 +9,12 @@ const schemas_1 = __importDefault(require("./schemas"));
 const swaggerDefinition = {
     openapi: '3.0.3',
     info: {
-        title: 'Mingga Api',
+        title: 'Club-leo Api',
         version: '0.0.1'
     },
     servers: [
         {
-            url: 'https://mingga-ff62aecb8180.herokuapp.com'
+            url: 'https://biblioleo-700ad891664c.herokuapp.com'
         },
         {
             url: 'http://localhost:4000'

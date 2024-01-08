@@ -3,15 +3,15 @@ import nodemailer from 'nodemailer'
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-    user: 'minggarmb@gmail.com',
-    pass: 'eoqduodlxxinwlbq'
+    user: 'clubleoapp@gmail.com',
+    pass: 'Milena1995*'
   },
   secure: true
 })
 
 const sendEmail = async (email: string, subject: string, text: string, html: string): Promise<void> => {
   const mailData = {
-    from: 'minggarmb@gmail.com',
+    from: 'clubleoapp@gmail.com',
     to: email,
     subject,
     text,

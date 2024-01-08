@@ -6,12 +6,12 @@ import schemas from './schemas'
 const swaggerDefinition: OAS3Definition = {
   openapi: '3.0.3',
   info: {
-    title: 'Mingga Api',
+    title: 'Club-leo Api',
     version: '0.0.1'
   },
   servers: [
     {
-      url: 'https://mingga-ff62aecb8180.herokuapp.com'
+      url: 'https://biblioleo-700ad891664c.herokuapp.com'
     },
     {
       url: 'http://localhost:4000'
