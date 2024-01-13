@@ -6,6 +6,7 @@ module.exports = (sequelize) => {
         static associate(models) {
             PersonTypes.hasMany(models.DocumentTypes);
             PersonTypes.hasMany(models.Users);
+            PersonTypes.hasMany(models.AdditionalTypes);
         }
     }
     PersonTypes.init({

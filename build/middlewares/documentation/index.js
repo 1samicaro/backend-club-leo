@@ -9,12 +9,12 @@ const schemas_1 = __importDefault(require("./schemas"));
 const swaggerDefinition = {
     openapi: '3.0.3',
     info: {
-        title: 'Backtemplate',
+        title: 'Mingga Api',
         version: '0.0.1'
     },
     servers: [
         {
-            url: 'https://pelagic-cocoa-382420.rj.r.appspot.com'
+            url: 'https://mingga-ff62aecb8180.herokuapp.com'
         },
         {
             url: 'http://localhost:4000'

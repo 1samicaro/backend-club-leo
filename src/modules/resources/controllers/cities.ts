@@ -1,23 +1,20 @@
 import type { Request } from 'express'
 
+import citiesServices from '../services/cities'
 import type { City } from '../types/cities'
-import { models } from '../../../database'
 
 const listCities = async (req: Request): Promise<City[]> => {
-  const { countryId } = req.query
-  const cities = await models.Cities.findAll({
-    where: { CountryId: countryId }
-  })
+  const { CountryId } = req.query
+  const cities = await citiesServices.getCityByCountryID(CountryId as string)
   return cities
 }
 
 const createCities = async (req: Request): Promise<City> => {
-  const newCity = await models.Cities.create({
-    name: req.body.name,
-    CountryId: req.body.countryId
-  }) as City
+  const newCity = req.body
 
-  return newCity
+  const city = await citiesServices.postCity(newCity)
+
+  return city
 }
 
 const citiesController = { createCities, listCities }

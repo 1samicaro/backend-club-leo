@@ -15,7 +15,7 @@
  *         type: string
  *         required: true
  *       - in: query
- *         name: countryId
+ *         name: CountryId
  *         schema:
  *         type: number
  *         required: true
@@ -47,6 +47,8 @@
  *            application/json:
  *              schema:
  *                $ref: "#/components/schemas/newCity"
+ *      security:
+ *        - bearerAuth: []
  *      responses:
  *        '201':
  *          $ref: "#/components/responses/200"

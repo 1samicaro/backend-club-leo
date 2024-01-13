@@ -12,6 +12,11 @@ const validateCreateCountry = [
         .isLength({ min: 3, max: 40 })
         .trim()
         .escape(),
+    (0, express_validator_1.body)('code', 'Code not valid')
+        .exists()
+        .isInt()
+        .toInt()
+        .isLength({ min: 1, max: 7 }),
     (req, res, next) => {
         (0, validator_1.default)(req, res, next);
     }

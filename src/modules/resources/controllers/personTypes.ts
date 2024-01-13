@@ -1,17 +1,16 @@
 import type { Request } from 'express'
 
+import personTypesServices from '../services/personTypes'
 import type { PersonType } from '../types/personTypes'
-import { models } from '../../../database'
 
 const listPersonTypes = async (): Promise<PersonType[]> => {
-  const personTypes = await models.PersonTypes.findAll()
+  const personTypes = await personTypesServices.getPersonTypes()
   return personTypes
 }
 
 const createPersonType = async (req: Request): Promise<PersonType> => {
-  const newPersonType = await models.PersonTypes.create({
-    name: req.body.name
-  }) as PersonType
+  const name = req.body.name
+  const newPersonType = await personTypesServices.postPersonType(name)
 
   return newPersonType
 }

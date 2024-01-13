@@ -11,6 +11,7 @@ module.exports = (sequelize: Sequelize) => {
     static associate (models: Record<string, any>): void {
       Cities.belongsTo(models.Countries)
       Cities.hasMany(models.Users)
+      Cities.hasMany(models.Offers)
     }
   }
   Cities.init({

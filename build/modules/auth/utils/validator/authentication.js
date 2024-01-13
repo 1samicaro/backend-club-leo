@@ -6,10 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_validator_1 = require("express-validator");
 const validator_1 = __importDefault(require("../../../../middlewares/validator"));
 const validateAuthentication = [
-    (0, express_validator_1.body)('email', 'Email not valid')
+    (0, express_validator_1.body)('username', 'Username not valid')
         .exists()
-        .isEmail()
-        .isLength({ min: 3, max: 40 })
+        .isLength({ min: 3, max: 20 })
         .trim()
         .escape(),
     (0, express_validator_1.body)('password', 'Password not valid')

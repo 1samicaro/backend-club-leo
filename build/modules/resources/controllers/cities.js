@@ -8,21 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const database_1 = require("../../../database");
+const cities_1 = __importDefault(require("../services/cities"));
 const listCities = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const { countryId } = req.query;
-    const cities = yield database_1.models.Cities.findAll({
-        where: { CountryId: countryId }
-    });
+    const { CountryId } = req.query;
+    const cities = yield cities_1.default.getCityByCountryID(CountryId);
     return cities;
 });
 const createCities = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const newCity = yield database_1.models.Cities.create({
-        name: req.body.name,
-        CountryId: req.body.countryId
-    });
-    return newCity;
+    const newCity = req.body;
+    const city = yield cities_1.default.postCity(newCity);
+    return city;
 });
 const citiesController = { createCities, listCities };
 exports.default = citiesController;

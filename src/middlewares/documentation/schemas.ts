@@ -1,123 +1,21 @@
-const schemas = {
-  newDocumentType: {
-    type: 'object',
-    required: ['name', 'label'],
-    properties: {
-      name: {
-        type: 'string'
-      },
-      label: {
-        type: 'string'
-      },
-      personTypeId: {
-        type: 'number'
-      },
-      countryId: {
-        type: 'number'
-      }
+import fs from 'fs'
+import path from 'path'
+
+const NODE_ENV = process.env.NODE_ENV as string
+
+const schemas = {}
+const dirPath = (NODE_ENV === 'dev') ? path.resolve(__dirname, '../../../src/modules') : path.resolve(__dirname, '../../../build/modules')
+
+const modules: string[] = fs.readdirSync(dirPath)
+
+modules.forEach((folder: string) => {
+  const schemaFile = fs.readdirSync(path.join(dirPath, folder, 'docs'))
+  schemaFile.forEach((file: string) => {
+    if (file.slice(0, -3) === 'schemas') {
+      const route = require(path.join(dirPath, folder, 'docs', file))
+      Object.assign(schemas, route.default)
     }
-  },
-  newCountry: {
-    type: 'object',
-    required: ['name'],
-    properties: {
-      name: {
-        type: 'string'
-      }
-    }
-  },
-  newCity: {
-    type: 'object',
-    required: ['name', 'countryId'],
-    properties: {
-      name: {
-        type: 'string'
-      },
-      countryId: {
-        type: 'number'
-      }
-    }
-  },
-  newPersonType: {
-    type: 'object',
-    required: ['name'],
-    properties: {
-      name: {
-        type: 'string'
-      }
-    }
-  },
-  newGender: {
-    type: 'object',
-    required: ['name'],
-    properties: {
-      name: {
-        type: 'string'
-      }
-    }
-  },
-  newRole: {
-    type: 'object',
-    required: ['name'],
-    properties: {
-      name: {
-        type: 'string'
-      }
-    }
-  },
-  newUser: {
-    type: 'object',
-    required: ['name', 'email', 'documentNumber', 'password', 'birthDate', 'phone', 'documentTypeId', 'roleId', 'personTypeId', 'cityId', 'countryId'],
-    properties: {
-      name: {
-        type: 'array',
-        items: {
-          type: 'string'
-        }
-      },
-      documentNumber: {
-        type: 'string'
-      },
-      email: {
-        type: 'string'
-      },
-      phone: {
-        type: 'string'
-      },
-      password: {
-        type: 'string'
-      },
-      birthDate: {
-        type: 'string'
-      },
-      documentTypeId: {
-        type: 'number'
-      },
-      roleId: {
-        type: 'number'
-      },
-      personTypeId: {
-        type: 'number'
-      },
-      cityId: {
-        type: 'number'
-      },
-      countryId: {
-        type: 'number'
-      }
-    }
-  },
-  login: {
-    type: 'object',
-    required: ['email', 'password'],
-    properties: {
-      email: {
-        type: 'string'
-      },
-      password: {
-        type: 'string'
-      }
-    }
-  }
-}
+  })
+})
+
 export default schemas

@@ -10,6 +10,11 @@ const validateCreateCountry = [
     .isLength({ min: 3, max: 40 })
     .trim()
     .escape(),
+  body('code', 'Code not valid')
+    .exists()
+    .isInt()
+    .toInt()
+    .isLength({ min: 1, max: 7 }),
   (req: Request, res: Response, next: NextFunction) => {
     validator(req, res, next)
   }

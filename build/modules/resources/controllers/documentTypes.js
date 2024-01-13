@@ -8,23 +8,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const database_1 = require("../../../database");
+const documentTypes_1 = __importDefault(require("../services/documentTypes"));
 const listDocumentTypes = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const { countryId, personTypeId } = req.query;
-    const documentTypes = yield database_1.models.DocumentTypes.findAll({
-        where: { CountryId: countryId, PersonTypeId: personTypeId }
-    });
+    const CountryId = req.query.CountryId;
+    const PersonTypeId = req.query.PersonTypeId;
+    const documentTypes = yield documentTypes_1.default.getDocumentTypesByPersonTypeAndCountryId(parseInt(CountryId), parseInt(PersonTypeId));
     return documentTypes;
 });
 const createDocumentType = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const newDocumentType = yield database_1.models.DocumentTypes.create({
-        name: req.body.name,
-        label: req.body.label,
-        CountryId: req.body.countryId,
-        PersonTypeId: req.body.personTypeId
-    });
-    return newDocumentType;
+    const newDocumentType = req.body;
+    const documentType = yield documentTypes_1.default.postDocumentType(newDocumentType);
+    return documentType;
 });
 const documentTypesController = { createDocumentType, listDocumentTypes };
 exports.default = documentTypesController;

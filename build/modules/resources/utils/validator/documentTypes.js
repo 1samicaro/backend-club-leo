@@ -18,11 +18,11 @@ const validateCreateDocumentType = [
         .isLength({ min: 1, max: 3 })
         .trim()
         .escape(),
-    (0, express_validator_1.body)('countryId', 'Country not valid')
+    (0, express_validator_1.body)('CountryId', 'Country not valid')
         .exists()
         .isInt()
         .toInt(),
-    (0, express_validator_1.body)('personTypeId', 'PersonType not valid')
+    (0, express_validator_1.body)('PersonTypeId', 'PersonType not valid')
         .exists()
         .isInt()
         .toInt(),
@@ -31,11 +31,11 @@ const validateCreateDocumentType = [
     }
 ];
 const validateListDocumentTypes = [
-    (0, express_validator_1.query)('countryId', 'Country not valid')
+    (0, express_validator_1.query)('CountryId', 'Country not valid')
         .exists()
         .isInt()
         .toInt(),
-    (0, express_validator_1.query)('personTypeId', 'PersonType not valid')
+    (0, express_validator_1.query)('PersonTypeId', 'PersonType not valid')
         .exists()
         .isInt()
         .toInt(),

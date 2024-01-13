@@ -12,7 +12,7 @@ const validateCreateCity = [
         .isLength({ min: 3, max: 40 })
         .trim()
         .escape(),
-    (0, express_validator_1.body)('countryId', 'Country not valid')
+    (0, express_validator_1.body)('CountryId', 'Country not valid')
         .exists()
         .isInt()
         .toInt(),
@@ -21,7 +21,7 @@ const validateCreateCity = [
     }
 ];
 const validateListCities = [
-    (0, express_validator_1.query)('countryId', 'Country not valid')
+    (0, express_validator_1.query)('CountryId', 'Country not valid')
         .exists()
         .isInt()
         .toInt(),
