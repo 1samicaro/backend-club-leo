@@ -1,43 +1,21 @@
 import type { Request } from 'express'
 
-import rolesServices from '../services/roles'
 import type { Role } from '../types/roles'
-import type { UserAuthenticated } from '../types/users'
+import { models } from '../../../database'
 
 const listRoles = async (): Promise<Role[]> => {
-  const roles = await rolesServices.getRoles()
+  const roles = await models.Roles.findAll()
   return roles
 }
 
 const createRoles = async (req: Request): Promise<Role> => {
-  const data = req.body
-  const newRole = await rolesServices.postRole(data)
+  const newRole = await models.Roles.create({
+    name: req.body.name
+  }) as Role
 
   return newRole
 }
 
-const roleInfo = async (req: Request): Promise<Role> => {
-  const id = req.params.id
-  const role = await rolesServices.getRoleById(parseInt(id))
-
-  return role
-}
-
-export const authorizeUser = async (req: Request, permissionRequired: string): Promise<boolean> => {
-  const { RoleId } = req.user as UserAuthenticated
-  const role = await rolesServices.getRoleById(parseInt(RoleId))
-
-  if (role.name === 'Root') {
-    return true
-  }
-
-  if (role.permissions.includes(permissionRequired)) {
-    return true
-  }
-
-  return false
-}
-
-const rolesController = { createRoles, listRoles, roleInfo }
+const rolesController = { createRoles, listRoles }
 
 export default rolesController

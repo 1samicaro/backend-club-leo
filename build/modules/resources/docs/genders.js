@@ -2,20 +2,15 @@
 /**
  * Post track
  * @openapi
- * /resources/additionalTypes:
+ * /resources/genders:
  *    get:
  *      tags:
- *        - Resources/AdditionalTypes
- *      summary: "List additional types"
- *      description: List additional types
+ *        - Resources/Genders
+ *      summary: "List genders"
+ *      description: List genders
  *      parameters:
  *       - in: header
  *         name: Version
- *         schema:
- *         type: string
- *         required: true
- *       - in: query
- *         name: PersonTypeId
  *         schema:
  *         type: string
  *         required: true
@@ -30,12 +25,12 @@
 /**
  * Post track
  * @openapi
- * /resources/additionalTypes:
+ * /resources/genders:
  *    post:
  *      tags:
- *        - Resources/AdditionalTypes
- *      summary: "Create additional types"
- *      description: Create additional types
+ *        - Resources/Genders
+ *      summary: "Create genders"
+ *      description: Create genders
  *      parameters:
  *       - in: header
  *         name: Version
@@ -46,9 +41,7 @@
  *          content:
  *            application/json:
  *              schema:
- *                $ref: "#/components/schemas/newAdditionalType"
- *      security:
- *        - bearerAuth: []
+ *                $ref: "#/components/schemas/newGender"
  *      responses:
  *        '201':
  *          $ref: "#/components/responses/200"

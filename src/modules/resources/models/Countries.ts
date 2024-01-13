@@ -7,7 +7,6 @@ module.exports = (sequelize: Sequelize) => {
   class Countries extends Model<CountriesModel> implements CountriesModel {
     id!: number
     name!: string
-    code!: number
 
     static associate (models: Record<string, any>): void {
       Countries.hasMany(models.Cities)
@@ -24,12 +23,7 @@ module.exports = (sequelize: Sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: false
-    },
-    code: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: false
+      unique: true
     }
   }, {
     sequelize,

@@ -1,21 +1,26 @@
 import type { Request } from 'express'
 
-import documentTypesServices from '../services/documentTypes'
 import type { DocumentType } from '../types/documentTypes'
+import { models } from '../../../database'
 
 const listDocumentTypes = async (req: Request): Promise<DocumentType[]> => {
-  const CountryId = req.query.CountryId as string
-  const PersonTypeId = req.query.PersonTypeId as string
-
-  const documentTypes = await documentTypesServices.getDocumentTypesByPersonTypeAndCountryId(parseInt(CountryId), parseInt(PersonTypeId))
+  const { countryId, personTypeId } = req.query
+  const documentTypes = await models.DocumentTypes.findAll({
+    where: { CountryId: countryId, PersonTypeId: personTypeId }
+  })
 
   return documentTypes
 }
 
 const createDocumentType = async (req: Request): Promise<DocumentType> => {
-  const newDocumentType = req.body
-  const documentType = await documentTypesServices.postDocumentType(newDocumentType)
-  return documentType
+  const newDocumentType = await models.DocumentTypes.create({
+    name: req.body.name,
+    label: req.body.label,
+    CountryId: req.body.countryId,
+    PersonTypeId: req.body.personTypeId
+  }) as DocumentType
+
+  return newDocumentType
 }
 
 const documentTypesController = { createDocumentType, listDocumentTypes }

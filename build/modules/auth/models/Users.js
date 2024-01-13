@@ -9,12 +9,6 @@ module.exports = (sequelize) => {
             Users.belongsTo(models.Roles);
             Users.belongsTo(models.PersonTypes);
             Users.belongsTo(models.DocumentTypes);
-            Users.belongsTo(models.AdditionalTypes);
-            Users.belongsTo(models.Users, { as: 'Partner' });
-            Users.belongsTo(models.Users, { as: 'GrandPartner' });
-            Users.belongsTo(models.Users, { as: 'GreatGrandPartner' });
-            Users.belongsToMany(models.Categories, { through: 'UsersCategories' });
-            Users.hasMany(models.Offers);
         }
     }
     Users.init({
@@ -44,14 +38,16 @@ module.exports = (sequelize) => {
         },
         phone: {
             type: sequelize_1.DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         },
         birthDate: {
             type: sequelize_1.DataTypes.DATEONLY,
             allowNull: false
         },
-        lastToken: {
-            type: sequelize_1.DataTypes.STRING
+        isComplete: {
+            type: sequelize_1.DataTypes.BOOLEAN,
+            defaultValue: false
         },
         isVerified: {
             type: sequelize_1.DataTypes.BOOLEAN,
@@ -62,72 +58,6 @@ module.exports = (sequelize) => {
             defaultValue: false
         },
         isDeleted: {
-            type: sequelize_1.DataTypes.BOOLEAN,
-            defaultValue: false
-        },
-        username: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },
-        discount: {
-            type: sequelize_1.DataTypes.JSONB,
-            allowNull: true
-        },
-        totalPoints: {
-            type: sequelize_1.DataTypes.INTEGER,
-            defaultValue: 0
-        },
-        totalSpent: {
-            type: sequelize_1.DataTypes.INTEGER,
-            defaultValue: 0
-        },
-        debt: {
-            type: sequelize_1.DataTypes.INTEGER,
-            defaultValue: 0
-        },
-        remainingReferrals: {
-            type: sequelize_1.DataTypes.INTEGER,
-            defaultValue: 10
-        },
-        representName: {
-            type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
-            allowNull: true
-        },
-        representDocumentNumber: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: true
-        },
-        representEmail: {
-            type: sequelize_1.DataTypes.STRING,
-            validate: { isEmail: true },
-            allowNull: true
-        },
-        representPhone: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: true
-        },
-        docs: {
-            type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
-            allowNull: true
-        },
-        address: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: true
-        },
-        website: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: true
-        },
-        description: {
-            type: sequelize_1.DataTypes.TEXT,
-            allowNull: true
-        },
-        profilePic: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: true
-        },
-        isApproved: {
             type: sequelize_1.DataTypes.BOOLEAN,
             defaultValue: false
         }

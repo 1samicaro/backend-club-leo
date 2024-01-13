@@ -8,19 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const countries_1 = __importDefault(require("../services/countries"));
+const database_1 = require("../../../database");
 const listCountries = () => __awaiter(void 0, void 0, void 0, function* () {
-    const countries = yield countries_1.default.getCountries();
+    const countries = yield database_1.models.Countries.findAll();
     return countries;
 });
 const createCountries = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const newCountry = req.body;
-    const country = yield countries_1.default.postCountry(newCountry);
-    return country;
+    const newCountry = yield database_1.models.Countries.create({
+        name: req.body.name
+    });
+    return newCountry;
 });
 const countriesController = { createCountries, listCountries };
 exports.default = countriesController;

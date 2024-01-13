@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize'
 import type { Sequelize } from 'sequelize'
 
-import type { UsersModel, discounts } from '../types/users'
+import type { UsersModel } from '../types/users'
 
 module.exports = (sequelize: Sequelize) => {
   class Users extends Model<UsersModel> implements UsersModel {
@@ -11,27 +11,11 @@ module.exports = (sequelize: Sequelize) => {
     email!: string
     password!: string
     phone!: string
-    lastToken!: string
+    isComplete!: boolean
     isVerified!: boolean
     isBanned!: boolean
     isDeleted!: boolean
     birthDate!: Date
-    username!: string
-    discount!: discounts
-    totalPoints!: number
-    totalSpent!: number
-    remainingReferrals!: number
-    representName!: string[]
-    representDocumentNumber!: string
-    representEmail!: string
-    representPhone!: string
-    docs!: string[]
-    address!: string
-    website!: string
-    description!: string
-    profilePic!: string
-    debt!: number
-    isApproved!: boolean
 
     static associate (models: Record<string, any>): void {
       Users.belongsTo(models.Countries)
@@ -39,12 +23,6 @@ module.exports = (sequelize: Sequelize) => {
       Users.belongsTo(models.Roles)
       Users.belongsTo(models.PersonTypes)
       Users.belongsTo(models.DocumentTypes)
-      Users.belongsTo(models.AdditionalTypes)
-      Users.belongsTo(models.Users, { as: 'Partner' })
-      Users.belongsTo(models.Users, { as: 'GrandPartner' })
-      Users.belongsTo(models.Users, { as: 'GreatGrandPartner' })
-      Users.belongsToMany(models.Categories, { through: 'UsersCategories' })
-      Users.hasMany(models.Offers)
     }
   }
   Users.init({
@@ -74,14 +52,16 @@ module.exports = (sequelize: Sequelize) => {
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     birthDate: {
       type: DataTypes.DATEONLY,
       allowNull: false
     },
-    lastToken: {
-      type: DataTypes.STRING
+    isComplete: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     },
     isVerified: {
       type: DataTypes.BOOLEAN,
@@ -92,72 +72,6 @@ module.exports = (sequelize: Sequelize) => {
       defaultValue: false
     },
     isDeleted: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    discount: {
-      type: DataTypes.JSONB,
-      allowNull: true
-    },
-    totalPoints: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    totalSpent: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    debt: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
-    },
-    remainingReferrals: {
-      type: DataTypes.INTEGER,
-      defaultValue: 10
-    },
-    representName: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: true
-    },
-    representDocumentNumber: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    representEmail: {
-      type: DataTypes.STRING,
-      validate: { isEmail: true },
-      allowNull: true
-    },
-    representPhone: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    docs: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: true
-    },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    website: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    },
-    profilePic: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    isApproved: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     }

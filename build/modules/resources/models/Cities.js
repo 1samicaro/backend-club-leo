@@ -6,7 +6,6 @@ module.exports = (sequelize) => {
         static associate(models) {
             Cities.belongsTo(models.Countries);
             Cities.hasMany(models.Users);
-            Cities.hasMany(models.Offers);
         }
     }
     Cities.init({

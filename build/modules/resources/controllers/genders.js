@@ -8,19 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const messages_1 = __importDefault(require("../services/messages"));
-const listMessages = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const messages = yield messages_1.default.getMessages();
-    return messages;
+const database_1 = require("../../../database");
+const listGenders = () => __awaiter(void 0, void 0, void 0, function* () {
+    const genders = yield database_1.models.Genders.findAll();
+    return genders;
 });
-const createMessage = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const newMessage = req.body;
-    const message = yield messages_1.default.postMessage(newMessage);
-    return message;
+const createGenders = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    const newGender = yield database_1.models.Genders.create({
+        name: req.body.name
+    });
+    return newGender;
 });
-const messagesController = { createMessage, listMessages };
-exports.default = messagesController;
+const citiesController = { createGenders, listGenders };
+exports.default = citiesController;

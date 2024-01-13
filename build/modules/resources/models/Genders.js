@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 module.exports = (sequelize) => {
-    class Offers extends sequelize_1.Model {
+    class Genders extends sequelize_1.Model {
         static associate(models) {
-            Offers.belongsTo(models.Cities);
+            console.log(models);
         }
     }
-    Offers.init({
+    Genders.init({
         id: {
             type: sequelize_1.DataTypes.INTEGER,
             autoIncrement: true,
@@ -15,19 +15,13 @@ module.exports = (sequelize) => {
         },
         name: {
             type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        image: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
-        },
-        url: {
-            type: sequelize_1.DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         }
     }, {
         sequelize,
-        modelName: 'Offers',
+        modelName: 'Genders',
         timestamps: false
     });
+    return Genders;
 };

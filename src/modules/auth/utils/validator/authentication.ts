@@ -4,9 +4,10 @@ import type { Request, Response, NextFunction } from 'express'
 import validator from '../../../../middlewares/validator'
 
 const validateAuthentication = [
-  body('username', 'Username not valid')
+  body('email', 'Email not valid')
     .exists()
-    .isLength({ min: 3, max: 20 })
+    .isEmail()
+    .isLength({ min: 3, max: 40 })
     .trim()
     .escape(),
   body('password', 'Password not valid')

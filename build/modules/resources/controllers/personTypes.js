@@ -8,18 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const personTypes_1 = __importDefault(require("../services/personTypes"));
+const database_1 = require("../../../database");
 const listPersonTypes = () => __awaiter(void 0, void 0, void 0, function* () {
-    const personTypes = yield personTypes_1.default.getPersonTypes();
+    const personTypes = yield database_1.models.PersonTypes.findAll();
     return personTypes;
 });
 const createPersonType = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const name = req.body.name;
-    const newPersonType = yield personTypes_1.default.postPersonType(name);
+    const newPersonType = yield database_1.models.PersonTypes.create({
+        name: req.body.name
+    });
     return newPersonType;
 });
 const personTypesController = { createPersonType, listPersonTypes };

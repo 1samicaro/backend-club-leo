@@ -42,8 +42,6 @@
  *            application/json:
  *              schema:
  *                $ref: "#/components/schemas/newPersonType"
- *      security:
- *        - bearerAuth: []
  *      responses:
  *        '201':
  *          $ref: "#/components/responses/200"

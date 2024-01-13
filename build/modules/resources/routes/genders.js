@@ -13,35 +13,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const passport_1 = __importDefault(require("passport"));
 const logger_1 = __importDefault(require("../../../middlewares/logger"));
-const additionalTypes_1 = __importDefault(require("../utils/validator/additionalTypes"));
-const additionalTypes_2 = __importDefault(require("../controllers/additionalTypes"));
-const roles_1 = require("../../auth/controllers/roles");
+const genders_1 = __importDefault(require("../controllers/genders"));
+const genders_2 = __importDefault(require("../utils/validator/genders"));
 const router = (0, express_1.Router)();
-router.get('/', additionalTypes_1.default.validateListAdditionalTypes, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const genders = yield additionalTypes_2.default.listAdditionalTypes(req);
+        const genders = yield genders_1.default.listGenders();
         res.status(200).json(genders);
     }
     catch (error) {
         logger_1.default.error(error);
-        res.status(400).json({ message: 'Error getting additional types' });
+        res.status(400).json({ message: 'Error getting genders' });
     }
 }));
-router.post('/', passport_1.default.authenticate('jwt', { session: false }), additionalTypes_1.default.validateCreateAdditionalTypes, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/', genders_2.default.validateCreateGenders, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const isAuthorized = yield (0, roles_1.authorizeUser)(req, 'create:resources');
-        if (!isAuthorized) {
-            res.status(401).json({ message: 'Unauthorized' });
-            return;
-        }
-        const newGender = yield additionalTypes_2.default.createAdditionalType(req);
+        const newGender = yield genders_1.default.createGenders(req);
         res.status(201).json(newGender);
     }
     catch (error) {
         logger_1.default.error(error);
-        res.status(400).json({ message: 'Error creating additional type' });
+        res.status(400).json({ message: 'Error creating gender' });
     }
 }));
 exports.default = router;

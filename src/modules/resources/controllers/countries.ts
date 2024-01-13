@@ -1,19 +1,19 @@
 import type { Request } from 'express'
 
-import countriesServices from '../services/countries'
 import type { Country } from '../types/countries'
+import { models } from '../../../database'
 
 const listCountries = async (): Promise<Country[]> => {
-  const countries = await countriesServices.getCountries()
+  const countries = await models.Countries.findAll()
   return countries
 }
 
 const createCountries = async (req: Request): Promise<Country> => {
-  const newCountry = req.body
+  const newCountry = await models.Countries.create({
+    name: req.body.name
+  }) as Country
 
-  const country = await countriesServices.postCountry(newCountry)
-
-  return country
+  return newCountry
 }
 
 const countriesController = { createCountries, listCountries }

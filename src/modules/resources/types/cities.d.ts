@@ -1,8 +1,8 @@
 export interface CitiesModel {
-  id?: number
+  id: number
   name: string
 }
 
 export interface City extends CitiesModel {
-  CountryId?: number
+  CountryId: number
 }

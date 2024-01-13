@@ -17,13 +17,6 @@ module.exports = (sequelize) => {
             type: sequelize_1.DataTypes.STRING,
             allowNull: false,
             unique: true
-        },
-        permissions: {
-            type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING)
-        },
-        isPossibleToCreate: {
-            type: sequelize_1.DataTypes.BOOLEAN,
-            defaultValue: false
         }
     }, {
         sequelize,

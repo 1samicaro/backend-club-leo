@@ -7,7 +7,7 @@ const express_validator_1 = require("express-validator");
 const validator_1 = __importDefault(require("../validator"));
 const validateVersion = [
     (0, express_validator_1.header)('Version', 'Version not valid')
-        .optional()
+        .exists()
         .isString()
         .isLength({ min: 5, max: 8 })
         .trim()

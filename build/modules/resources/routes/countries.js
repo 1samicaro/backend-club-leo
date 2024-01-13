@@ -13,11 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const passport_1 = __importDefault(require("passport"));
 const logger_1 = __importDefault(require("../../../middlewares/logger"));
 const countries_1 = __importDefault(require("../controllers/countries"));
 const countries_2 = __importDefault(require("../utils/validator/countries"));
-const roles_1 = require("../../auth/controllers/roles");
 const router = (0, express_1.Router)();
 router.get('/', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -29,13 +27,8 @@ router.get('/', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(400).json({ message: 'Error getting countries' });
     }
 }));
-router.post('/', passport_1.default.authenticate('jwt', { session: false }), countries_2.default.validateCreateCountry, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/', countries_2.default.validateCreateCountry, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const isAuthorized = yield (0, roles_1.authorizeUser)(req, 'create:resources');
-        if (!isAuthorized) {
-            res.status(401).json({ message: 'Unauthorized' });
-            return;
-        }
         const newCountry = yield countries_1.default.createCountries(req);
         res.status(201).json(newCountry);
     }

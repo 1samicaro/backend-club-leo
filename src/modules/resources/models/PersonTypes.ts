@@ -11,7 +11,6 @@ module.exports = (sequelize: Sequelize) => {
     static associate (models: Record<string, any>): void {
       PersonTypes.hasMany(models.DocumentTypes)
       PersonTypes.hasMany(models.Users)
-      PersonTypes.hasMany(models.AdditionalTypes)
     }
   }
   PersonTypes.init({

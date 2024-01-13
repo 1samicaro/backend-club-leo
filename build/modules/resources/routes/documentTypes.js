@@ -13,11 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const passport_1 = __importDefault(require("passport"));
 const logger_1 = __importDefault(require("../../../middlewares/logger"));
 const documentTypes_1 = __importDefault(require("../controllers/documentTypes"));
 const documentTypes_2 = __importDefault(require("../utils/validator/documentTypes"));
-const roles_1 = require("../../auth/controllers/roles");
 const router = (0, express_1.Router)();
 router.get('/', documentTypes_2.default.validateListDocumentTypes, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -29,13 +27,8 @@ router.get('/', documentTypes_2.default.validateListDocumentTypes, (req, res) =>
         res.status(400).json({ message: 'Error getting document types' });
     }
 }));
-router.post('/', passport_1.default.authenticate('jwt', { session: false }), documentTypes_2.default.validateCreateDocumentType, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/', documentTypes_2.default.validateCreateDocumentType, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const isAuthorized = yield (0, roles_1.authorizeUser)(req, 'create:resources');
-        if (!isAuthorized) {
-            res.status(401).json({ message: 'Unauthorized' });
-            return;
-        }
         const newDocumentType = yield documentTypes_1.default.createDocumentType(req);
         res.status(201).json(newDocumentType);
     }
