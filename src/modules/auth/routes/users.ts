@@ -26,7 +26,7 @@ router.get('/', passport.authenticate('jwt', { session: false }), async (req: Re
   }
 })
 
-router.post('/', usersValidator.validateCreateUsers, async (req: Request, res: Response): Promise<void> => {
+router.post('/', async (req: Request, res: Response): Promise<void> => {
   try {
     Log.error('req.body', req.body)
     const newUser = await usersController.createUsers(req)
