@@ -32,10 +32,11 @@ module.exports = (sequelize: Sequelize) => {
     profilePic!: string
     debt!: number
     isApproved!: boolean
+    isSuscribed!: boolean
+    suscriptionDate!: Date
 
     static associate (models: Record<string, any>): void {
       Users.belongsTo(models.Countries)
-      Users.belongsTo(models.Cities)
       Users.belongsTo(models.Roles)
       Users.belongsTo(models.PersonTypes)
       Users.belongsTo(models.DocumentTypes)
@@ -43,7 +44,6 @@ module.exports = (sequelize: Sequelize) => {
       Users.belongsTo(models.Users, { as: 'Partner' })
       Users.belongsTo(models.Users, { as: 'GrandPartner' })
       Users.belongsTo(models.Users, { as: 'GreatGrandPartner' })
-      Users.belongsToMany(models.Categories, { through: 'UsersCategories' })
       Users.hasMany(models.Offers)
     }
   }
@@ -160,6 +160,14 @@ module.exports = (sequelize: Sequelize) => {
     isApproved: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+    isSuscribed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    suscriptionDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: true
     }
   }, {
     sequelize,

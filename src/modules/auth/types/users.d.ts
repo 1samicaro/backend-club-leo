@@ -26,6 +26,8 @@ export interface UsersModel {
   profilePic?: string
   debt: number
   isApproved?: boolean
+  isSuscribed?: boolean
+  suscriptionDate?: Date
 }
 
 export type discounts = Record<string, number>
