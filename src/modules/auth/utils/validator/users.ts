@@ -46,10 +46,6 @@ const validateCreateUsers = [
     .exists()
     .isInt()
     .toInt(),
-  body('CityId', 'CityId not valid')
-    .exists()
-    .isInt()
-    .toInt(),
   body('PersonTypeId', 'PersonTypeId not valid')
     .exists()
     .isInt()

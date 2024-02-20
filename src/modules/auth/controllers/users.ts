@@ -14,7 +14,7 @@ const listUsers = async (): Promise<User[]> => {
 
 const createUsers = async (req: Request): Promise<User> => {
   const hash = await encrypt(req.body.password)
-  console.log(req.body)
+  console.warn(req.body)
   const RoleId = req.body.RoleId
 
   const role = await rolesServices.getRoleById(RoleId)

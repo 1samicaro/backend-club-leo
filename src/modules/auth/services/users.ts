@@ -18,6 +18,7 @@ const getUsers = async (): Promise<User[]> => {
 }
 
 const postUser = async (userData: User): Promise<User> => {
+  console.warn('service')
   if (userData?.docs?.length === 0 || userData?.docs === undefined) userData.isVerified = true
 
   userData.username = userData.username.toLowerCase()
