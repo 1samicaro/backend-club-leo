@@ -19,7 +19,7 @@ const getUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     const users = yield database_1.models.Users.findAll({
         include: [
             database_1.models.DocumentTypes,
-            database_1.models.Countries, database_1.models.Cities,
+            database_1.models.Countries,
             database_1.models.PersonTypes, database_1.models.Roles,
             database_1.models.AdditionalTypes,
             { model: database_1.models.Users, as: 'Partner', attributes: ['id', 'username'] },
@@ -47,7 +47,7 @@ const getUserById = (id) => __awaiter(void 0, void 0, void 0, function* () {
         where: { id },
         include: [
             database_1.models.DocumentTypes,
-            database_1.models.Countries, database_1.models.Cities,
+            database_1.models.Countries,
             database_1.models.PersonTypes, database_1.models.Roles,
             database_1.models.AdditionalTypes,
             { model: database_1.models.Users, as: 'Partner', attributes: ['id', 'username'] },
@@ -64,7 +64,7 @@ const getUserByUsernameLog = (username) => __awaiter(void 0, void 0, void 0, fun
         where: { username },
         include: [
             database_1.models.DocumentTypes,
-            database_1.models.Countries, database_1.models.Cities,
+            database_1.models.Countries,
             database_1.models.PersonTypes, database_1.models.Roles,
             database_1.models.AdditionalTypes,
             { model: database_1.models.Users, as: 'Partner', attributes: ['id', 'username'] },
@@ -113,9 +113,6 @@ const searchUsers = (data) => __awaiter(void 0, void 0, void 0, function* () {
     const options = [];
     if (data.CountryId !== undefined) {
         options.push({ CountryId: data.CountryId });
-    }
-    if (data.CityId !== undefined) {
-        options.push({ CityId: data.CityId });
     }
     if (data.PersonTypeId !== undefined) {
         options.push({ PersonTypeId: data.PersonTypeId });

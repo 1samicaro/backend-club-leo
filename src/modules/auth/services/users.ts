@@ -7,7 +7,7 @@ const getUsers = async (): Promise<User[]> => {
   const users = await models.Users.findAll({
     include: [
       models.DocumentTypes,
-      models.Countries, models.Cities,
+      models.Countries,
       models.PersonTypes, models.Roles,
       models.AdditionalTypes,
       { model: models.Users, as: 'Partner', attributes: ['id', 'username'] },
@@ -37,7 +37,7 @@ const getUserById = async (id: string): Promise<User> => {
     where: { id },
     include: [
       models.DocumentTypes,
-      models.Countries, models.Cities,
+      models.Countries,
       models.PersonTypes, models.Roles,
       models.AdditionalTypes,
       { model: models.Users, as: 'Partner', attributes: ['id', 'username'] },
@@ -56,7 +56,7 @@ const getUserByUsernameLog = async (username: string): Promise<User> => {
     where: { username },
     include: [
       models.DocumentTypes,
-      models.Countries, models.Cities,
+      models.Countries,
       models.PersonTypes, models.Roles,
       models.AdditionalTypes,
       { model: models.Users, as: 'Partner', attributes: ['id', 'username'] },
@@ -111,9 +111,6 @@ const searchUsers = async (data: any): Promise<User[]> => {
   const options = []
   if (data.CountryId !== undefined) {
     options.push({ CountryId: data.CountryId })
-  }
-  if (data.CityId !== undefined) {
-    options.push({ CityId: data.CityId })
   }
   if (data.PersonTypeId !== undefined) {
     options.push({ PersonTypeId: data.PersonTypeId })
