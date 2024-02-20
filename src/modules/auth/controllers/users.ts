@@ -6,6 +6,7 @@ import type { User, UserAuthenticated } from '../types/users'
 import { encrypt } from '../utils/encrypt'
 import sendEmail from '../../../middlewares/sendEmail'
 import { v4 as uuidv4 } from 'uuid'
+import Log from '../../../middlewares/logger'
 
 const listUsers = async (): Promise<User[]> => {
   const users = await usersService.getUsers()
@@ -14,7 +15,7 @@ const listUsers = async (): Promise<User[]> => {
 
 const createUsers = async (req: Request): Promise<User> => {
   const hash = await encrypt(req.body.password)
-  console.warn(req.body)
+  Log.error(req.body)
   const RoleId = req.body.RoleId
 
   const role = await rolesServices.getRoleById(RoleId)

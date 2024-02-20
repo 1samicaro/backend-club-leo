@@ -1,6 +1,7 @@
 import type { User } from '../types/users'
 import { models } from '../../../database'
 import { Op } from 'sequelize'
+import Log from '../../../middlewares/logger'
 
 const getUsers = async (): Promise<User[]> => {
   const users = await models.Users.findAll({
@@ -18,7 +19,7 @@ const getUsers = async (): Promise<User[]> => {
 }
 
 const postUser = async (userData: User): Promise<User> => {
-  console.warn('service')
+  Log.error('service')
   if (userData?.docs?.length === 0 || userData?.docs === undefined) userData.isVerified = true
 
   userData.username = userData.username.toLowerCase()
