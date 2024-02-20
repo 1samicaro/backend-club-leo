@@ -12,8 +12,8 @@ const getUsers = async (): Promise<User[]> => {
       models.AdditionalTypes,
       { model: models.Users, as: 'Partner', attributes: ['id', 'username'] },
       { model: models.Users, as: 'GrandPartner', attributes: ['id', 'username'] },
-      { model: models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] },
-      models.Categories]
+      { model: models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] }
+    ]
   })
   return users
 }
@@ -26,9 +26,6 @@ const postUser = async (userData: User): Promise<User> => {
 
   const newUser = await models.Users.create(userData)
 
-  if (userData.Categories !== undefined) {
-    await newUser.setCategories(userData.Categories)
-  }
   return newUser as User
 }
 
@@ -42,8 +39,7 @@ const getUserById = async (id: string): Promise<User> => {
       models.AdditionalTypes,
       { model: models.Users, as: 'Partner', attributes: ['id', 'username'] },
       { model: models.Users, as: 'GrandPartner', attributes: ['id', 'username'] },
-      { model: models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] },
-      models.Categories
+      { model: models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] }
     ]
   })
   return user
@@ -61,8 +57,8 @@ const getUserByUsernameLog = async (username: string): Promise<User> => {
       models.AdditionalTypes,
       { model: models.Users, as: 'Partner', attributes: ['id', 'username'] },
       { model: models.Users, as: 'GrandPartner', attributes: ['id', 'username'] },
-      { model: models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] },
-      models.Categories]
+      { model: models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] }
+    ]
   })
   return user
 }

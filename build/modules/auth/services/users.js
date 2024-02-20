@@ -24,8 +24,7 @@ const getUsers = () => __awaiter(void 0, void 0, void 0, function* () {
             database_1.models.AdditionalTypes,
             { model: database_1.models.Users, as: 'Partner', attributes: ['id', 'username'] },
             { model: database_1.models.Users, as: 'GrandPartner', attributes: ['id', 'username'] },
-            { model: database_1.models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] },
-            database_1.models.Categories
+            { model: database_1.models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] }
         ]
     });
     return users;
@@ -37,9 +36,6 @@ const postUser = (userData) => __awaiter(void 0, void 0, void 0, function* () {
         userData.isVerified = true;
     userData.username = userData.username.toLowerCase();
     const newUser = yield database_1.models.Users.create(userData);
-    if (userData.Categories !== undefined) {
-        yield newUser.setCategories(userData.Categories);
-    }
     return newUser;
 });
 const getUserById = (id) => __awaiter(void 0, void 0, void 0, function* () {
@@ -52,8 +48,7 @@ const getUserById = (id) => __awaiter(void 0, void 0, void 0, function* () {
             database_1.models.AdditionalTypes,
             { model: database_1.models.Users, as: 'Partner', attributes: ['id', 'username'] },
             { model: database_1.models.Users, as: 'GrandPartner', attributes: ['id', 'username'] },
-            { model: database_1.models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] },
-            database_1.models.Categories
+            { model: database_1.models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] }
         ]
     });
     return user;
@@ -69,8 +64,7 @@ const getUserByUsernameLog = (username) => __awaiter(void 0, void 0, void 0, fun
             database_1.models.AdditionalTypes,
             { model: database_1.models.Users, as: 'Partner', attributes: ['id', 'username'] },
             { model: database_1.models.Users, as: 'GrandPartner', attributes: ['id', 'username'] },
-            { model: database_1.models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] },
-            database_1.models.Categories
+            { model: database_1.models.Users, as: 'GreatGrandPartner', attributes: ['id', 'username'] }
         ]
     });
     return user;
