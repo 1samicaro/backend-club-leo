@@ -48,10 +48,6 @@ const validateCreateUsers = [
         .exists()
         .isInt()
         .toInt(),
-    (0, express_validator_1.body)('CityId', 'CityId not valid')
-        .exists()
-        .isInt()
-        .toInt(),
     (0, express_validator_1.body)('PersonTypeId', 'PersonTypeId not valid')
         .exists()
         .isInt()

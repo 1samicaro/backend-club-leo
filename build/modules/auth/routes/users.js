@@ -34,8 +34,9 @@ router.get('/', passport_1.default.authenticate('jwt', { session: false }), (req
         res.status(400).json({ message: 'Error getting users' });
     }
 }));
-router.post('/', users_2.default.validateCreateUsers, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        logger_1.default.error('req.body', req.body);
         const newUser = yield users_1.default.createUsers(req);
         res.status(201).json(newUser);
     }

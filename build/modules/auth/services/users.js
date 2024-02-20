@@ -8,9 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = require("../../../database");
 const sequelize_1 = require("sequelize");
+const logger_1 = __importDefault(require("../../../middlewares/logger"));
 const getUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     const users = yield database_1.models.Users.findAll({
         include: [
@@ -28,6 +32,7 @@ const getUsers = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 const postUser = (userData) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
+    logger_1.default.error('service');
     if (((_a = userData === null || userData === void 0 ? void 0 : userData.docs) === null || _a === void 0 ? void 0 : _a.length) === 0 || (userData === null || userData === void 0 ? void 0 : userData.docs) === undefined)
         userData.isVerified = true;
     userData.username = userData.username.toLowerCase();

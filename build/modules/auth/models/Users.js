@@ -5,7 +5,6 @@ module.exports = (sequelize) => {
     class Users extends sequelize_1.Model {
         static associate(models) {
             Users.belongsTo(models.Countries);
-            Users.belongsTo(models.Cities);
             Users.belongsTo(models.Roles);
             Users.belongsTo(models.PersonTypes);
             Users.belongsTo(models.DocumentTypes);
@@ -13,7 +12,6 @@ module.exports = (sequelize) => {
             Users.belongsTo(models.Users, { as: 'Partner' });
             Users.belongsTo(models.Users, { as: 'GrandPartner' });
             Users.belongsTo(models.Users, { as: 'GreatGrandPartner' });
-            Users.belongsToMany(models.Categories, { through: 'UsersCategories' });
             Users.hasMany(models.Offers);
         }
     }
@@ -55,7 +53,7 @@ module.exports = (sequelize) => {
         },
         isVerified: {
             type: sequelize_1.DataTypes.BOOLEAN,
-            defaultValue: false
+            defaultValue: true
         },
         isBanned: {
             type: sequelize_1.DataTypes.BOOLEAN,
@@ -129,7 +127,15 @@ module.exports = (sequelize) => {
         },
         isApproved: {
             type: sequelize_1.DataTypes.BOOLEAN,
+            defaultValue: true
+        },
+        isSuscribed: {
+            type: sequelize_1.DataTypes.BOOLEAN,
             defaultValue: false
+        },
+        suscriptionDate: {
+            type: sequelize_1.DataTypes.DATEONLY,
+            allowNull: true
         }
     }, {
         sequelize,

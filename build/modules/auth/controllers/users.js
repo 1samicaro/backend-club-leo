@@ -28,12 +28,14 @@ const roles_1 = __importDefault(require("../services/roles"));
 const encrypt_1 = require("../utils/encrypt");
 const sendEmail_1 = __importDefault(require("../../../middlewares/sendEmail"));
 const uuid_1 = require("uuid");
+const logger_1 = __importDefault(require("../../../middlewares/logger"));
 const listUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     const users = yield users_1.default.getUsers();
     return users;
 });
 const createUsers = (req) => __awaiter(void 0, void 0, void 0, function* () {
     const hash = yield (0, encrypt_1.encrypt)(req.body.password);
+    logger_1.default.error(req.body);
     const RoleId = req.body.RoleId;
     const role = yield roles_1.default.getRoleById(RoleId);
     if (!role.isPossibleToCreate) {
