@@ -5,7 +5,6 @@ module.exports = (sequelize) => {
     class Cities extends sequelize_1.Model {
         static associate(models) {
             Cities.belongsTo(models.Countries);
-            Cities.hasMany(models.Users);
             Cities.hasMany(models.Offers);
         }
     }
