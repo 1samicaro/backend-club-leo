@@ -6,7 +6,7 @@ import sequelize from './database'
 
 const PORT = process.env.PORT ?? ''
 
-void sequelize.sync({ force: false, alter: false, logging: console.log }).then(() => {
+void sequelize.sync({ force: false, alter: true, logging: console.log }).then(() => {
   server.listen(PORT, () => {
     console.log('Listening at port ' + PORT)
   })

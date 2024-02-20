@@ -85,7 +85,7 @@ module.exports = (sequelize: Sequelize) => {
     },
     isVerified: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
+      defaultValue: true
     },
     isBanned: {
       type: DataTypes.BOOLEAN,
@@ -159,7 +159,7 @@ module.exports = (sequelize: Sequelize) => {
     },
     isApproved: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
+      defaultValue: true
     },
     isSuscribed: {
       type: DataTypes.BOOLEAN,
