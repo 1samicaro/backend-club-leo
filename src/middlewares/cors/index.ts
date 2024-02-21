@@ -6,7 +6,7 @@ const whitelist: string[] = ['http://localhost:3000', 'http://localhost:4000', '
 
 const corsConfig = {
   origin: function (origin: string, response: (res: string | null, cont?: boolean) => void) {
-    if (whitelist.includes(origin) || origin === undefined) {
+    if (true) {
       response(null, true)
     } else {
       Log.error('Origin not allowed ' + origin)
