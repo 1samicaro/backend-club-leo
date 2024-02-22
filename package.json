@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@google-cloud/logging-winston": "^5.3.0",
+    "@types/mercadopago": "^1.5.11",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -53,6 +54,7 @@
     "express-validator": "^7.0.0",
     "helmet": "^6.1.5",
     "jsonwebtoken": "^9.0.0",
+    "mercadopago": "^1.5.8",
     "moment": "^2.29.4",
     "morgan": "^1.10.0",
     "nodemailer": "^6.9.2",

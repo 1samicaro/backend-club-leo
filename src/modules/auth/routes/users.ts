@@ -6,6 +6,7 @@ import Log from '../../../middlewares/logger'
 import usersController from '../controllers/users'
 import usersValidator from '../utils/validator/users'
 import { authorizeUser } from '../controllers/roles'
+import mercadopago from 'mercadopago'
 
 const router = Router()
 
@@ -142,6 +143,34 @@ router.get('/resetVerify/:username/:id', async (req: Request, res: Response) => 
   } catch (error) {
     Log.error(error)
     res.status(400).json({ message: 'Error resetting password' })
+  }
+})
+
+router.post('/paySuscription', async (req: Request, res: Response) => {
+  try {
+    const preference = {
+      items: [
+        {
+          title: 'Suscripcion',
+          unit_price: 50000,
+          quantity: 1
+        }
+      ],
+      back_urls: {
+        success: 'www.clubleo.net',
+        failure: 'www.clubleo.net',
+        pending: 'www.clubleo.net'
+      },
+      auto_return: 'approved'
+    } as any
+    mercadopago.configure({
+      access_token: 'TEST-6830219983343019-022211-ebf8e9cfc1cecb54274c86d0aaeb74cf-1680049721'
+    })
+    const response = await mercadopago.preferences.create(preference)
+    res.status(200).json(response)
+  } catch (error) {
+    Log.error(error)
+    res.status(400).json({ message: 'Error sending mail' })
   }
 })
 

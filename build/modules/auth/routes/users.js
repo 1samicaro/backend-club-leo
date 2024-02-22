@@ -18,6 +18,7 @@ const logger_1 = __importDefault(require("../../../middlewares/logger"));
 const users_1 = __importDefault(require("../controllers/users"));
 const users_2 = __importDefault(require("../utils/validator/users"));
 const roles_1 = require("../controllers/roles");
+const mercadopago_1 = __importDefault(require("mercadopago"));
 const router = (0, express_1.Router)();
 router.get('/', passport_1.default.authenticate('jwt', { session: false }), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -148,6 +149,34 @@ router.get('/resetVerify/:username/:id', (req, res) => __awaiter(void 0, void 0,
     catch (error) {
         logger_1.default.error(error);
         res.status(400).json({ message: 'Error resetting password' });
+    }
+}));
+router.post('/paySuscription', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const preference = {
+            items: [
+                {
+                    title: 'Suscripcion',
+                    unit_price: 50000,
+                    quantity: 1
+                }
+            ],
+            back_urls: {
+                success: 'www.clubleo.net',
+                failure: 'www.clubleo.net',
+                pending: 'www.clubleo.net'
+            },
+            auto_return: 'approved'
+        };
+        mercadopago_1.default.configure({
+            access_token: 'TEST-6830219983343019-022211-ebf8e9cfc1cecb54274c86d0aaeb74cf-1680049721'
+        });
+        const response = yield mercadopago_1.default.preferences.create(preference);
+        res.status(200).json(response);
+    }
+    catch (error) {
+        logger_1.default.error(error);
+        res.status(400).json({ message: 'Error sending mail' });
     }
 }));
 exports.default = router;

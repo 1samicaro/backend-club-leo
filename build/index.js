@@ -10,7 +10,7 @@ dotenv_1.default.config();
 const server_1 = __importDefault(require("./server"));
 const database_1 = __importDefault(require("./database"));
 const PORT = (_a = process.env.PORT) !== null && _a !== void 0 ? _a : '';
-void database_1.default.sync({ force: false, alter: true, logging: console.log }).then(() => {
+void database_1.default.sync({ force: false, alter: false, logging: console.log }).then(() => {
     server_1.default.listen(PORT, () => {
         console.log('Listening at port ' + PORT);
     });
