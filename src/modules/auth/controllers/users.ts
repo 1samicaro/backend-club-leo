@@ -333,8 +333,11 @@ const resetPasswordVerify = async (req: Request): Promise<void> => {
 }
 
 const updatePayData = async (req: Request): Promise<User> => {
-  const { id } = req.user as UserAuthenticated
+  let { id } = req.user as UserAuthenticated
   const userData = req.body
+  if (userData.idToActivate !== undefined) {
+    id = userData.idToActivate
+  }
   const user = await usersService.getUserById(id as string)
   if (user === null) {
     throw new Error('User not found')

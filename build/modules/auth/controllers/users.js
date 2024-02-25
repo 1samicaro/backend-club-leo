@@ -316,8 +316,11 @@ const resetPasswordVerify = (req) => __awaiter(void 0, void 0, void 0, function*
     yield users_1.default.patchUser({ password: hash, lastToken: null }, user);
 });
 const updatePayData = (req) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.user;
+    let { id } = req.user;
     const userData = req.body;
+    if (userData.idToActivate !== undefined) {
+        id = userData.idToActivate;
+    }
     const user = yield users_1.default.getUserById(id);
     if (user === null) {
         throw new Error('User not found');
