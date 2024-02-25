@@ -315,5 +315,15 @@ const resetPasswordVerify = (req) => __awaiter(void 0, void 0, void 0, function*
     const hash = yield (0, encrypt_1.encrypt)('00000000');
     yield users_1.default.patchUser({ password: hash, lastToken: null }, user);
 });
-const usersController = { resetPasswordVerify, updateUserById, createUsers, getUserByUserName, listUsers, userInfo, listDescendants, searchUsers, deleteUserById, verifyUserById, banUserById, resetPassword };
+const updatePayData = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.user;
+    const userData = req.body;
+    const user = yield users_1.default.getUserById(id);
+    if (user === null) {
+        throw new Error('User not found');
+    }
+    const updatedUser = yield users_1.default.patchUser(userData, user);
+    return updatedUser;
+});
+const usersController = { updatePayData, resetPasswordVerify, updateUserById, createUsers, getUserByUserName, listUsers, userInfo, listDescendants, searchUsers, deleteUserById, verifyUserById, banUserById, resetPassword };
 exports.default = usersController;

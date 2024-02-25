@@ -46,7 +46,7 @@ router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(400).json({ message: 'Error creating user' });
     }
 }));
-router.patch('/', users_2.default.validateUpdateUsers, passport_1.default.authenticate('jwt', { session: false }), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.patch('/', passport_1.default.authenticate('jwt', { session: false }), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield users_1.default.updateUserById(req);
         res.status(200).json({ message: 'User updated' });
@@ -162,7 +162,7 @@ router.post('/paySuscription', (req, res) => __awaiter(void 0, void 0, void 0, f
                 }
             ],
             back_urls: {
-                success: 'www.clubleo.net',
+                success: 'www.clubleo.net/sendpay',
                 failure: 'www.clubleo.net',
                 pending: 'www.clubleo.net'
             },
@@ -177,6 +177,16 @@ router.post('/paySuscription', (req, res) => __awaiter(void 0, void 0, void 0, f
     catch (error) {
         logger_1.default.error(error);
         res.status(400).json({ message: 'Error sending mail' });
+    }
+}));
+router.patch('/sendPay', passport_1.default.authenticate('jwt', { session: false }), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield users_1.default.updatePayData(req);
+        res.status(200).json({ message: 'User updated' });
+    }
+    catch (error) {
+        logger_1.default.error(error);
+        res.status(400).json({ message: 'Error updating user' });
     }
 }));
 exports.default = router;

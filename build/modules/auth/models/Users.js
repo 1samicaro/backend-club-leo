@@ -136,6 +136,14 @@ module.exports = (sequelize) => {
         suscriptionDate: {
             type: sequelize_1.DataTypes.DATEONLY,
             allowNull: true
+        },
+        transferType: {
+            type: sequelize_1.DataTypes.STRING,
+            allowNull: true
+        },
+        transferId: {
+            type: sequelize_1.DataTypes.STRING,
+            allowNull: true
         }
     }, {
         sequelize,

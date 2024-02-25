@@ -34,6 +34,8 @@ module.exports = (sequelize: Sequelize) => {
     isApproved!: boolean
     isSuscribed!: boolean
     suscriptionDate!: Date
+    transferType!: string
+    transferId!: string
 
     static associate (models: Record<string, any>): void {
       Users.belongsTo(models.Countries)
@@ -167,6 +169,14 @@ module.exports = (sequelize: Sequelize) => {
     },
     suscriptionDate: {
       type: DataTypes.DATEONLY,
+      allowNull: true
+    },
+    transferType: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    transferId: {
+      type: DataTypes.STRING,
       allowNull: true
     }
   }, {

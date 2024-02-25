@@ -332,6 +332,18 @@ const resetPasswordVerify = async (req: Request): Promise<void> => {
   await usersService.patchUser({ password: hash, lastToken: null }, user)
 }
 
-const usersController = { resetPasswordVerify, updateUserById, createUsers, getUserByUserName, listUsers, userInfo, listDescendants, searchUsers, deleteUserById, verifyUserById, banUserById, resetPassword }
+const updatePayData = async (req: Request): Promise<User> => {
+  const { id } = req.user as UserAuthenticated
+  const userData = req.body
+  const user = await usersService.getUserById(id as string)
+  if (user === null) {
+    throw new Error('User not found')
+  }
+
+  const updatedUser = await usersService.patchUser(userData, user)
+  return updatedUser
+}
+
+const usersController = { updatePayData, resetPasswordVerify, updateUserById, createUsers, getUserByUserName, listUsers, userInfo, listDescendants, searchUsers, deleteUserById, verifyUserById, banUserById, resetPassword }
 
 export default usersController

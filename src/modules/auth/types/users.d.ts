@@ -28,6 +28,8 @@ export interface UsersModel {
   isApproved?: boolean
   isSuscribed?: boolean
   suscriptionDate?: Date
+  transferType?: string
+  transferId?: string
 }
 
 export type discounts = Record<string, number>

@@ -38,7 +38,7 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
   }
 })
 
-router.patch('/', usersValidator.validateUpdateUsers, passport.authenticate('jwt', { session: false }), async (req: Request, res: Response) => {
+router.patch('/', passport.authenticate('jwt', { session: false }), async (req: Request, res: Response) => {
   try {
     await usersController.updateUserById(req)
     res.status(200).json({ message: 'User updated' })
@@ -157,7 +157,7 @@ router.post('/paySuscription', async (req: Request, res: Response) => {
         }
       ],
       back_urls: {
-        success: 'www.clubleo.net',
+        success: 'www.clubleo.net/sendpay',
         failure: 'www.clubleo.net',
         pending: 'www.clubleo.net'
       },
@@ -171,6 +171,16 @@ router.post('/paySuscription', async (req: Request, res: Response) => {
   } catch (error) {
     Log.error(error)
     res.status(400).json({ message: 'Error sending mail' })
+  }
+})
+
+router.patch('/sendPay', passport.authenticate('jwt', { session: false }), async (req: Request, res: Response) => {
+  try {
+    await usersController.updatePayData(req)
+    res.status(200).json({ message: 'User updated' })
+  } catch (error) {
+    Log.error(error)
+    res.status(400).json({ message: 'Error updating user' })
   }
 })
 
