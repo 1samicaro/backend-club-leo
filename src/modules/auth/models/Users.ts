@@ -120,7 +120,7 @@ module.exports = (sequelize: Sequelize) => {
     },
     remainingReferrals: {
       type: DataTypes.INTEGER,
-      defaultValue: 10
+      defaultValue: 20
     },
     representName: {
       type: DataTypes.ARRAY(DataTypes.STRING),

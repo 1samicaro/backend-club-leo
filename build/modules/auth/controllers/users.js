@@ -56,13 +56,14 @@ const createUsers = (req) => __awaiter(void 0, void 0, void 0, function* () {
         userData.GreatGrandPartnerId = partner.GrandPartnerId;
         yield users_1.default.patchUser({ remainingReferrals: partner.remainingReferrals - 1 }, partner);
     }
+    userData.totalPoints = 3000;
     const newUser = yield users_1.default.postUser(userData);
     const _a = newUser.dataValues, { password } = _a, user = __rest(_a, ["password"]);
     yield (0, sendEmail_1.default)(user.email, 'Bienvenido a mingga', `Hola ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]} `, `<!DOCTYPE html>
   <html>
       <head>
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-          <title>Presentación Mingga</title>
+          <title>Cordial Saludo ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]}</title>
           <style>
               .img-container {
                   text-align: center;
@@ -80,14 +81,14 @@ const createUsers = (req) => __awaiter(void 0, void 0, void 0, function* () {
       <body>
           <header>
               <span class="img-container">
-                  <img src="https://res.cloudinary.com/dsuxfsvt1/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1684973775/LogoMinggaN_uqm8we.jpg?_s=public-apps" alt="logo" width="280"/>
+                  <img src="https://github.com/1samicaro/frontend-club-leo/blob/main/src/assets/logoleo.png?raw=true" alt="logo" width="280"/>
               </span>
           </header>
           <br />
           <br />
           <section>
               <article class="article-container">
-                  <h2>Cordial Saludo ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]}</h2>
+                  <h2>Te damos la bienvenida como socio de LEO, para construir entre todos un mundo más educado y culto</h2>
                   <br />
                   <p>Te damos la bienvenida como socio de Minga Red Mundial de Bienestar, para
                       construir solidariamente un mejor futuro para todos.</p>
@@ -95,18 +96,17 @@ const createUsers = (req) => __awaiter(void 0, void 0, void 0, function* () {
                   <h3>Para ingresar puede utilizar los siguientes items:</h3>
                   <p>Usuario: ${user.username} y la Contraseña suministrada</p>
                   <br />
-                  <h3>solo te falta hacer dos cosas:</h3>
                   <ul>
-                      <li>Invitar a 10 personas a ser socios de Minga, con tu usuario.</li>
-                      <li>Cada vez que necesites algo, adquiérelo a través de nuestra Red Comercial.</li>
-                  </ul>
+                      <li>Ya tienes acceso a nuestra biblioteca digital con más de 15.000 obras en 5 idiomas, y si lo deseas, puedes descargar todo el catálogo en tu celular o tableta.</li>
+                      <li>Recuerda que para construir tu negocio propio LEO y obtener ingresos de por vida, solo debes hacer dos cosas muy sencillas:</li>
+                      <li>1. Invitar a máximo 20 socios directos, con tu usuario</li>
+                      <li>1. 2. Hacer seguimiento a tu red y apoyar a tus socios para que cada uno construya su propia Red Personal de Amigos. También será socios tuyos!.</li>
+                      </ul>
                   <br />
-                  <p>Recuerda que también puedes vender tus productos u ofrecer tus servicios
-                      personales a todos los socios de Minga.</p>
                   <br />
                   <br />
                   <p>Atentamente,</p>
-                  <h2>Equipo Mingga</h2>
+                  <h2>Equipo LEO</h2>
               </article>
           </section>
       </body>
@@ -167,7 +167,7 @@ const verifyUserById = (req) => __awaiter(void 0, void 0, void 0, function* () {
       <body>
           <header>
               <span class="img-container">
-                  <img src="https://res.cloudinary.com/dsuxfsvt1/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1684973775/LogoMinggaN_uqm8we.jpg?_s=public-apps" alt="logo" width="280"/>
+                  <img src="https://github.com/1samicaro/frontend-club-leo/blob/main/src/assets/logoleo.png?raw=true" alt="logo" width="280"/>
               </span>
           </header>
           <br />
@@ -176,10 +176,10 @@ const verifyUserById = (req) => __awaiter(void 0, void 0, void 0, function* () {
               <article class="article-container">
                   <h2>Cordial Saludo ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]}</h2>
                   <br />
-                  <p>Te damos la bienvenida tu usuario a sido verificado, ya puedes ofertar con nosotros</p>
+                  <p>Te damos la bienvenida tu usuario a sido verificado, ya puedes ingresar con nosotros</p>
                   <br />
                   <p>Atentamente,</p>
-                  <h2>Equipo Mingga</h2>
+                  <h2>Equipo Leo</h2>
               </article>
           </section>
       </body>
@@ -284,7 +284,7 @@ const resetPassword = (req) => __awaiter(void 0, void 0, void 0, function* () {
       <body>
           <header>
               <span class="img-container">
-                  <img src="https://res.cloudinary.com/dsuxfsvt1/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1684973775/LogoMinggaN_uqm8we.jpg?_s=public-apps" alt="logo" width="280"/>
+                  <img src="https://github.com/1samicaro/frontend-club-leo/blob/main/src/assets/logoleo.png?raw=true" alt="logo" width="280"/>
               </span>
           </header>
           <br />
@@ -294,12 +294,12 @@ const resetPassword = (req) => __awaiter(void 0, void 0, void 0, function* () {
                   <h2>Hola, ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]}</h2>
                   <h3>Hemos recibido una solicitud de cambio de contraseña para tu usuario ${user.username}</h3>
                   <h3>si no la solicitaste has caso omiso, si lo hiciste da click </h3>
-                  <a href="https://pelagic-cocoa-382420.rj.r.appspot.com/auth/users/resetVerify/${user === null || user === void 0 ? void 0 : user.username}/${tokenId}">AQUI</a>
+                  <a href="https://biblioleo-backend-8420e56b8a6b.herokuapp.com/auth/users/resetVerify/${user === null || user === void 0 ? void 0 : user.username}/${tokenId}">AQUI</a>
                   <h3>y luego  ingresa a tu cuenta con la contraseña 00000000</h3>
                   <br />
                   <h3>No olvides cambiar tu contraseña una vez logres ingresar de nuevo.</h3>
                   <br />
-                  <h2>Equipo Mingga</h2>
+                  <h2>Equipo LEO</h2>
               </article>
           </section>
       </body>

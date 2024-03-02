@@ -86,7 +86,7 @@ module.exports = (sequelize) => {
         },
         remainingReferrals: {
             type: sequelize_1.DataTypes.INTEGER,
-            defaultValue: 10
+            defaultValue: 20
         },
         representName: {
             type: sequelize_1.DataTypes.ARRAY(sequelize_1.DataTypes.STRING),
