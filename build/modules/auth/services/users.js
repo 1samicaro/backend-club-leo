@@ -85,7 +85,7 @@ const patchUser = (data, userData) => __awaiter(void 0, void 0, void 0, function
 const getChildsByUserId = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const users = yield database_1.models.Users.findAll({
         where: { PartnerId: id },
-        attributes: ['id', 'username', 'name', 'remainingReferrals']
+        attributes: ['id', 'username', 'name', 'remainingReferrals', 'email']
     });
     return users;
 });

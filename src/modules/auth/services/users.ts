@@ -82,7 +82,7 @@ const patchUser = async (data: unknown, userData: any): Promise<User> => {
 const getChildsByUserId = async (id: string): Promise<User[]> => {
   const users = await models.Users.findAll({
     where: { PartnerId: id },
-    attributes: ['id', 'username', 'name', 'remainingReferrals']
+    attributes: ['id', 'username', 'name', 'remainingReferrals', 'email']
   })
   return users
 }
