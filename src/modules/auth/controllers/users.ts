@@ -36,63 +36,62 @@ const createUsers = async (req: Request): Promise<User> => {
     userData.GreatGrandPartnerId = partner.GrandPartnerId
     await usersService.patchUser({ remainingReferrals: partner.remainingReferrals - 1 }, partner)
   }
-  userData.totalPoints = 3000
 
   const newUser: UserAuthenticated = await usersService.postUser(userData)
   const { password, ...user } = newUser.dataValues as User
 
   await sendEmail(user.email, 'Bienvenido a mingga', `Hola ${user?.name[1]} ${user?.name[0]} `, `<!DOCTYPE html>
   <html>
-      <head>
-          <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-          <title>Cordial Saludo ${user?.name[1]} ${user?.name[0]}</title>
-          <style>
-              .img-container {
-                  text-align: center;
-                  display: block;
-              }
-              .article-container{
-                  text-align: center;
-                  display: block;
-              }
-              ul {
-                  list-style: none;
-              }
-          </style>
-      </head>
-      <body>
-          <header>
-              <span class="img-container">
-                  <img src="https://github.com/1samicaro/frontend-club-leo/blob/main/src/assets/logoleo.png?raw=true" alt="logo" width="280"/>
-              </span>
-          </header>
-          <br />
-          <br />
-          <section>
-              <article class="article-container">
-                  <h2>Te damos la bienvenida como socio de LEO, para construir entre todos un mundo más educado y culto</h2>
-                  <br />
-                  <p>Te damos la bienvenida como socio de Minga Red Mundial de Bienestar, para
-                      construir solidariamente un mejor futuro para todos.</p>
-                  <br />
-                  <h3>Para ingresar puede utilizar los siguientes items:</h3>
-                  <p>Usuario: ${user.username} y la Contraseña suministrada</p>
-                  <br />
-                  <ul>
-                      <li>Ya tienes acceso a nuestra biblioteca digital con más de 15.000 obras en 5 idiomas, y si lo deseas, puedes descargar todo el catálogo en tu celular o tableta.</li>
-                      <li>Recuerda que para construir tu negocio propio LEO y obtener ingresos de por vida, solo debes hacer dos cosas muy sencillas:</li>
-                      <li>1. Invitar a máximo 20 socios directos, con tu usuario</li>
-                      <li>1. 2. Hacer seguimiento a tu red y apoyar a tus socios para que cada uno construya su propia Red Personal de Amigos. También será socios tuyos!.</li>
-                      </ul>
-                  <br />
-                  <br />
-                  <br />
-                  <p>Atentamente,</p>
-                  <h2>Equipo LEO</h2>
-              </article>
-          </section>
-      </body>
-  </html>`)
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <title>Presentación Clubleo</title>
+      <style>
+          .img-container {
+              text-align: center;
+              display: block;
+          }
+          .article-container{
+              text-align: center;
+              display: block;
+          }
+          ul {
+              list-style: none;
+          }
+      </style>
+  </head>
+  <body>
+      <header>
+          <span class="img-container">
+              <!-- <img src="https://res.cloudinary.com/dsuxfsvt1/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1684973775/LogoMinggaN_uqm8we.jpg?_s=public-apps" alt="logo" width="280"/> -->
+              <!-- <img src="https://drive.google.com/file/d/11rwPEAoD4hKWAUgHwslAtQvoEIrtuQjo/view?usp=sharing" alt="logo"/> -->
+              <img src="https://drive.google.com/thumbnail?sz=w1920&id=11rwPEAoD4hKWAUgHwslAtQvoEIrtuQjo">
+          </span>
+      </header>
+      <br />
+      <br />
+      <section>
+          <article class="article-container">
+              <h2>Cordial Saludo ${user?.name[1]} ${user?.name[0]}</h2>
+              <br />
+              <p>Te damos la bienvenida como socio de LEO, para construir entre todos un mundo más educado y culto.</p>
+              <br />
+              <h3>Para ingresar puede utilizar los siguientes items:</h3>
+              <p>Usuario: ${user.username} y la Contraseña suministrada</p>
+              <br />
+              <h3>Ya tienes acceso a nuestra biblioteca digital con más de 15.000 obras en 5 idiomas, y si lo deseas, puedes descargar todo el catálogo en tu celular o tableta.</h3>
+              <p>Recuerda que para construir tu negocio propio LEO y obtener ingresos de por vida, solo debes hacer dos cosas muy sencillas:</p>
+              <ul>
+                  <li>Invitar a máximo 20 socios directos, con tu usuario.</li>
+                  <li>Hacer seguimiento a tu red y apoyar a tus socios para que cada uno construya su propia Red Personal de Amigos. También será socios tuyos!.</li>
+              </ul>
+              <br />
+              <br />
+              <br />
+              <p>Atentamente,</p>
+              <h2>Equipo LEO</h2>
+          </article>
+      </section>
+  </body>`)
 
   return user
 }
@@ -140,57 +139,43 @@ const verifyUserById = async (req: Request): Promise<User> => {
 
   await sendEmail(user.email, 'Bienvenido a mingga', `Hola ${user?.name[1]} ${user?.name[0]} `, `<!DOCTYPE html>
   <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Presentación Clubleo</title>
-        <style>
-            .img-container {
-                text-align: center;
-                display: block;
-            }
-            .article-container{
-                text-align: center;
-                display: block;
-            }
-            ul {
-                list-style: none;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <span class="img-container">
-                <!-- <img src="https://res.cloudinary.com/dsuxfsvt1/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1684973775/LogoMinggaN_uqm8we.jpg?_s=public-apps" alt="logo" width="280"/> -->
-                <!-- <img src="https://drive.google.com/file/d/11rwPEAoD4hKWAUgHwslAtQvoEIrtuQjo/view?usp=sharing" alt="logo"/> -->
-                <img src="https://drive.google.com/thumbnail?sz=w1920&id=11rwPEAoD4hKWAUgHwslAtQvoEIrtuQjo">
-            </span>
-        </header>
-        <br />
-        <br />
-        <section>
-            <article class="article-container">
-                <h2>Cordial Saludo ${user?.name[1]} ${user?.name[0]}</h2>
-                <br />
-                <p>Te damos la bienvenida como socio de LEO, para construir entre todos un mundo más educado y culto.</p>
-                <br />
-                <h3>Para ingresar puede utilizar los siguientes items:</h3>
-                <p>Usuario: ${user.username} y la Contraseña suministrada</p>
-                <br />
-                <h3>Ya tienes acceso a nuestra biblioteca digital con más de 15.000 obras en 5 idiomas, y si lo deseas, puedes descargar todo el catálogo en tu celular o tableta.</h3>
-                <p>Recuerda que para construir tu negocio propio LEO y obtener ingresos de por vida, solo debes hacer dos cosas muy sencillas:</p>
-                <ul>
-                    <li>Invitar a máximo 20 socios directos, con tu usuario.</li>
-                    <li>Hacer seguimiento a tu red y apoyar a tus socios para que cada uno construya su propia Red Personal de Amigos. También será socios tuyos!.</li>
-                </ul>
-                <br />
-                <br />
-                <br />
-                <p>Atentamente,</p>
-                <h2>Equipo LEO</h2>
-            </article>
-        </section>
-    </body>
-</html> `)
+      <head>
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+          <title>Usuario verificado</title>
+          <style>
+              .img-container {
+                  text-align: center;
+                  display: block;
+              }
+              .article-container{
+                  text-align: center;
+                  display: block;
+              }
+              ul {
+                  list-style: none;
+              }
+          </style>
+      </head>
+      <body>
+          <header>
+              <span class="img-container">
+                  <img src="https://github.com/1samicaro/frontend-club-leo/blob/main/src/assets/logoleo.png?raw=true" alt="logo" width="280"/>
+              </span>
+          </header>
+          <br />
+          <br />
+          <section>
+              <article class="article-container">
+                  <h2>Cordial Saludo ${user?.name[1]} ${user?.name[0]}</h2>
+                  <br />
+                  <p>Te damos la bienvenida tu usuario a sido verificado, ya puedes ingresar con nosotros</p>
+                  <br />
+                  <p>Atentamente,</p>
+                  <h2>Equipo Leo</h2>
+              </article>
+          </section>
+      </body>
+  </html>`)
   return user
 }
 
@@ -356,7 +341,7 @@ const updatePayData = async (req: Request): Promise<User> => {
   if (user === null) {
     throw new Error('User not found')
   }
-
+  userData.totalPoints = 3000
   const updatedUser = await usersService.patchUser(userData, user)
   return updatedUser
 }
