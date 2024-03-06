@@ -342,6 +342,28 @@ const updatePayData = async (req: Request): Promise<User> => {
     throw new Error('User not found')
   }
   userData.totalPoints = 3000
+  if (user.PartnerId !== null && user.PartnerId !== undefined) {
+    const partner = await usersService.getUserById(user.PartnerId)
+    partner.totalPoints += 4500
+    if (partner !== null) {
+      await usersService.patchUser(partner, partner)
+    }
+  }
+  if (user.GrandPartnerId !== null && user.GrandPartnerId !== undefined) {
+    const grandPartner = await usersService.getUserById(user.GrandPartnerId)
+    grandPartner.totalPoints += 6000
+    if (grandPartner !== null) {
+      await usersService.patchUser(grandPartner, grandPartner)
+    }
+  }
+  if (user.GreatGrandPartnerId !== null && user.GreatGrandPartnerId !== undefined) {
+    const greatGrandPartner = await usersService.getUserById(user.GreatGrandPartnerId)
+    greatGrandPartner.totalPoints += 7500
+    if (greatGrandPartner !== null) {
+      await usersService.patchUser(greatGrandPartner, greatGrandPartner)
+    }
+  }
+
   const updatedUser = await usersService.patchUser(userData, user)
   return updatedUser
 }

@@ -325,6 +325,27 @@ const updatePayData = (req) => __awaiter(void 0, void 0, void 0, function* () {
         throw new Error('User not found');
     }
     userData.totalPoints = 3000;
+    if (user.PartnerId !== null && user.PartnerId !== undefined) {
+        const partner = yield users_1.default.getUserById(user.PartnerId);
+        partner.totalPoints += 4500;
+        if (partner !== null) {
+            yield users_1.default.patchUser(partner, partner);
+        }
+    }
+    if (user.GrandPartnerId !== null && user.GrandPartnerId !== undefined) {
+        const grandPartner = yield users_1.default.getUserById(user.GrandPartnerId);
+        grandPartner.totalPoints += 6000;
+        if (grandPartner !== null) {
+            yield users_1.default.patchUser(grandPartner, grandPartner);
+        }
+    }
+    if (user.GreatGrandPartnerId !== null && user.GreatGrandPartnerId !== undefined) {
+        const greatGrandPartner = yield users_1.default.getUserById(user.GreatGrandPartnerId);
+        greatGrandPartner.totalPoints += 7500;
+        if (greatGrandPartner !== null) {
+            yield users_1.default.patchUser(greatGrandPartner, greatGrandPartner);
+        }
+    }
     const updatedUser = yield users_1.default.patchUser(userData, user);
     return updatedUser;
 });
