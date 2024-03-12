@@ -164,7 +164,7 @@ router.post('/paySuscription', async (req: Request, res: Response) => {
       auto_return: 'approved'
     } as any
     mercadopago.configure({
-      access_token: 'TEST-6830219983343019-022211-ebf8e9cfc1cecb54274c86d0aaeb74cf-1680049721'
+      access_token: 'APP_USR-6830219983343019-022211-5ce7634ea505c52049bb7f5b515ef0dc-1680049721'
     })
     const response = await mercadopago.preferences.create(preference)
     res.status(200).json(response)
