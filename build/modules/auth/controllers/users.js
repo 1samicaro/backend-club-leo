@@ -58,7 +58,7 @@ const createUsers = (req) => __awaiter(void 0, void 0, void 0, function* () {
     }
     const newUser = yield users_1.default.postUser(userData);
     const _a = newUser.dataValues, { password } = _a, user = __rest(_a, ["password"]);
-    yield (0, sendEmail_1.default)(user.email, 'Bienvenido a mingga', `Hola ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]} `, `<!DOCTYPE html>
+    yield (0, sendEmail_1.default)(user.email, 'Bienvenido a Clubleo', `Hola ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]} `, `<!DOCTYPE html>
   <html>
   <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -91,16 +91,16 @@ const createUsers = (req) => __awaiter(void 0, void 0, void 0, function* () {
           <article class="article-container">
               <h2>Cordial Saludo ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]}</h2>
               <br />
-              <p>Te damos la bienvenida como socio de LEO, para construir entre todos un mundo más educado y culto.</p>
+              <p>Te damos la bienvenida como socio de LEO, para fortalecer tus competencias comunicativas y construir entre todos un mundo más educado y culto.</p>
               <br />
               <h3>Para ingresar puede utilizar los siguientes items:</h3>
               <p>Usuario: ${user.username} y la Contraseña suministrada</p>
               <br />
               <h3>Ya tienes acceso a nuestra biblioteca digital con más de 15.000 obras en 5 idiomas, y si lo deseas, puedes descargar todo el catálogo en tu celular o tableta.</h3>
-              <p>Recuerda que para construir tu negocio propio LEO y obtener ingresos de por vida, solo debes hacer dos cosas muy sencillas:</p>
+              <p>Si deseas apoyar a LEO en su crecimiento en nuestro país y el mundo, puedes participar en el Plan Amigos, y recibirás importantes beneficios para lograr la excelencia en tus estudios. Solo debes hacer dos cosas muy sencillas:</p>
               <ul>
-                  <li>Invitar a máximo 20 socios directos, con tu usuario.</li>
-                  <li>Hacer seguimiento a tu red y apoyar a tus socios para que cada uno construya su propia Red Personal de Amigos. También será socios tuyos!.</li>
+                  <li>Invitar a máximo 20 amigos o compañeros de estudio a ser socios de LEO, enviándoles tu link personal o proporcionándoles tu usuario. Una vez completes tus 20 invitados, no tendrás que invitar a nadie más, y recibirás tu Tableta de 10” con la biblioteca digital grabada.</li>
+                  <li>Hacer seguimiento a tus invitados y apoyarlos para que cada uno pueda invitar a sus 20 socios. También será socios tuyos! y recibirás tu PC portátil!.</li>
               </ul>
               <br />
               <br />
@@ -115,7 +115,7 @@ const createUsers = (req) => __awaiter(void 0, void 0, void 0, function* () {
 const userInfo = (req) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
     const userData = yield users_1.default.getUserById(id);
-    const _b = userData.dataValues, { password } = _b, user = __rest(_b, ["password"]);
+    const _a = userData.dataValues, { password } = _a, user = __rest(_a, ["password"]);
     return user;
 });
 const listDescendants = (req) => __awaiter(void 0, void 0, void 0, function* () {
@@ -144,7 +144,7 @@ const verifyUserById = (req) => __awaiter(void 0, void 0, void 0, function* () {
     if (user === null) {
         throw new Error('User not found');
     }
-    yield (0, sendEmail_1.default)(user.email, 'Bienvenido a mingga', `Hola ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]} `, `<!DOCTYPE html>
+    yield (0, sendEmail_1.default)(user.email, 'Bienvenido a Clubleo', `Hola ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]} `, `<!DOCTYPE html>
   <html>
       <head>
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -293,7 +293,7 @@ const resetPassword = (req) => __awaiter(void 0, void 0, void 0, function* () {
                   <h2>Hola, ${user === null || user === void 0 ? void 0 : user.name[1]} ${user === null || user === void 0 ? void 0 : user.name[0]}</h2>
                   <h3>Hemos recibido una solicitud de cambio de contraseña para tu usuario ${user.username}</h3>
                   <h3>si no la solicitaste has caso omiso, si lo hiciste da click </h3>
-                  <a href="https://biblioleo-backend-8420e56b8a6b.herokuapp.com/auth/users/resetVerify/${user === null || user === void 0 ? void 0 : user.username}/${tokenId}">AQUI</a>
+                  <a href="https://clubleo-back-326bb7d836eb.herokuapp.com/auth/users/resetVerify/${user === null || user === void 0 ? void 0 : user.username}/${tokenId}">AQUI</a>
                   <h3>y luego  ingresa a tu cuenta con la contraseña 00000000</h3>
                   <br />
                   <h3>No olvides cambiar tu contraseña una vez logres ingresar de nuevo.</h3>

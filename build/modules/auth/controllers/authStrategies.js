@@ -91,7 +91,7 @@ const authStrategies = () => {
             if (userData.lastToken !== payload.lastToken) {
                 return done(null, { isError: true, message: 'Invalid refresh token' });
             }
-            const _b = userData.dataValues, { password, lastToken } = _b, user = __rest(_b, ["password", "lastToken"]);
+            const _a = userData.dataValues, { password, lastToken } = _a, user = __rest(_a, ["password", "lastToken"]);
             const token = (0, signTokens_1.signToken)(user, TOKEN_SECRET);
             const tokenId = (0, uuid_1.v4)();
             const refreshToken = (0, signTokens_1.signRefreshToken)(user, tokenId, REFRESH_SECRET);
