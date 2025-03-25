@@ -152,7 +152,7 @@ router.post('/paySuscription', async (req: Request, res: Response) => {
       items: [
         {
           title: 'Suscripcion',
-          unit_price: 50000,
+          unit_price: 5000,
           quantity: 1
         }
       ],
@@ -164,7 +164,7 @@ router.post('/paySuscription', async (req: Request, res: Response) => {
       auto_return: 'approved'
     } as any
     mercadopago.configure({
-      access_token: 'APP_USR-6830219983343019-022211-5ce7634ea505c52049bb7f5b515ef0dc-1680049721'
+      access_token: 'APP_USR-4084476259474136-020517-a13fabdeb4110943865ef44e9aa57dd4-2199029758'
     })
     const response = await mercadopago.preferences.create(preference)
     res.status(200).json(response)
