@@ -152,7 +152,7 @@ router.post('/paySuscription', async (req: Request, res: Response) => {
       items: [
         {
           title: 'Suscripcion',
-          unit_price: 5000,
+          unit_price: 100000,
           quantity: 1
         }
       ],

@@ -327,21 +327,21 @@ const updatePayData = (req) => __awaiter(void 0, void 0, void 0, function* () {
     userData.totalPoints = 0;
     if (user.PartnerId !== null && user.PartnerId !== undefined) {
         const partner = yield users_1.default.getUserById(user.PartnerId);
-        partner.totalPoints += 5;
+        partner.totalPoints += 10000;
         if (partner !== null) {
             yield users_1.default.patchUser(partner, partner);
         }
     }
     if (user.GrandPartnerId !== null && user.GrandPartnerId !== undefined) {
         const grandPartner = yield users_1.default.getUserById(user.GrandPartnerId);
-        grandPartner.totalPoints += 8;
+        grandPartner.totalPoints += 20000;
         if (grandPartner !== null) {
             yield users_1.default.patchUser(grandPartner, grandPartner);
         }
     }
     if (user.GreatGrandPartnerId !== null && user.GreatGrandPartnerId !== undefined) {
         const greatGrandPartner = yield users_1.default.getUserById(user.GreatGrandPartnerId);
-        greatGrandPartner.totalPoints += 12;
+        greatGrandPartner.totalPoints += 30000;
         if (greatGrandPartner !== null) {
             yield users_1.default.patchUser(greatGrandPartner, greatGrandPartner);
         }

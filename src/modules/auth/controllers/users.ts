@@ -344,21 +344,21 @@ const updatePayData = async (req: Request): Promise<User> => {
   userData.totalPoints = 0
   if (user.PartnerId !== null && user.PartnerId !== undefined) {
     const partner = await usersService.getUserById(user.PartnerId)
-    partner.totalPoints += 5
+    partner.totalPoints += 10000
     if (partner !== null) {
       await usersService.patchUser(partner, partner)
     }
   }
   if (user.GrandPartnerId !== null && user.GrandPartnerId !== undefined) {
     const grandPartner = await usersService.getUserById(user.GrandPartnerId)
-    grandPartner.totalPoints += 8
+    grandPartner.totalPoints += 20000
     if (grandPartner !== null) {
       await usersService.patchUser(grandPartner, grandPartner)
     }
   }
   if (user.GreatGrandPartnerId !== null && user.GreatGrandPartnerId !== undefined) {
     const greatGrandPartner = await usersService.getUserById(user.GreatGrandPartnerId)
-    greatGrandPartner.totalPoints += 12
+    greatGrandPartner.totalPoints += 30000
     if (greatGrandPartner !== null) {
       await usersService.patchUser(greatGrandPartner, greatGrandPartner)
     }

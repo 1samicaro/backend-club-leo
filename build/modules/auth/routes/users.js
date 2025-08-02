@@ -157,7 +157,7 @@ router.post('/paySuscription', (req, res) => __awaiter(void 0, void 0, void 0, f
             items: [
                 {
                     title: 'Suscripcion',
-                    unit_price: 50000,
+                    unit_price: 100000,
                     quantity: 1
                 }
             ],
